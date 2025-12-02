@@ -1,5 +1,5 @@
 import cheeseBalls from "@/assets/cheese-balls.jpg";
-import cheeseFries from "@/assets/cheese-fries.jpg";
+import cheeseFries from "@/assets/hero-loaded-fries.jpg";
 import chickenPatty from "@/assets/chicken-patty.jpg";
 import { Button } from "@/components/ui/button";
 
