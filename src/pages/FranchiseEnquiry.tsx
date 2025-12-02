@@ -468,7 +468,19 @@ const FranchiseEnquiry = () => {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-16 bg-background">
+      <section className="py-16 bg-background relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${pattern})`,
+              backgroundSize: "auto",
+              backgroundRepeat: "repeat",
+            }}
+          />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-6xl mx-auto">
             <div className="text-center mb-12">
@@ -561,10 +573,23 @@ const FranchiseEnquiry = () => {
             </div>
           </div>
         </div>
+        </div>
       </section>
 
       {/* Welcome Section */}
-      <section className="py-12 bg-muted/30">
+      <section className="py-12 bg-muted/30 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${pattern})`,
+              backgroundSize: "auto",
+              backgroundRepeat: "repeat",
+            }}
+          />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-8">
@@ -578,10 +603,23 @@ const FranchiseEnquiry = () => {
             </div>
           </div>
         </div>
+        </div>
       </section>
 
       {/* Form Section */}
-      <section className="py-12 bg-muted/30">
+      <section className="py-12 bg-muted/30 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${pattern})`,
+              backgroundSize: "auto",
+              backgroundRepeat: "repeat",
+            }}
+          />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-3xl mx-auto">
             <form onSubmit={handleSubmit} className="space-y-6 bg-card p-8 rounded-lg border shadow-lg">
@@ -769,6 +807,7 @@ const FranchiseEnquiry = () => {
               </Button>
             </form>
           </div>
+        </div>
         </div>
       </section>
 

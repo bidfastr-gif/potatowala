@@ -40,8 +40,8 @@ export const Header = () => {
             {/* Navigation */}
             <nav className="hidden md:flex items-center gap-8">
               <a href="/" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium">Home</a>
-              <a href="/menu" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium">Menu</a>
               <a href="/about" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium">About</a>
+              <a href="/menu" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium">Menu</a>
               <a href="/franchise" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium">Our Franchise</a>
               
               {/* For Enquiry dropdown: Event / Franchise */}

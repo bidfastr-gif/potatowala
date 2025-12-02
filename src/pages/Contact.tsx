@@ -51,7 +51,19 @@ const Contact = () => {
       </section>
 
       {/* Contact Cards Section */}
-      <section className="py-20 bg-background/90">
+      <section className="py-20 bg-background/90 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${pattern})`,
+              backgroundSize: "auto",
+              backgroundRepeat: "repeat",
+            }}
+          />
+        </div>
+        <div className="relative z-10">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto -mt-16 relative z-10">
             {/* Contact Us Card */}
@@ -109,6 +121,7 @@ const Contact = () => {
               </CardContent>
             </Card>
           </div>
+        </div>
         </div>
       </section>
 

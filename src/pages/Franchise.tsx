@@ -133,7 +133,19 @@ const Franchise = () => {
       </section>
 
       {/* Store Listings Section */}
-      <section className="py-12 bg-background">
+      <section className="py-12 bg-background relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${pattern})`,
+              backgroundSize: "auto",
+              backgroundRepeat: "repeat",
+            }}
+          />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
         <div className="container mx-auto px-4">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
             {stores.map((store, index) => (
@@ -179,10 +191,23 @@ const Franchise = () => {
             ))}
           </div>
         </div>
+        </div>
       </section>
 
       {/* Map Section */}
-      <section className="py-8 bg-background">
+      <section className="py-8 bg-background relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${pattern})`,
+              backgroundSize: "auto",
+              backgroundRepeat: "repeat",
+            }}
+          />
+        </div>
+        <div className="container mx-auto px-4 relative z-10">
         <div className="container mx-auto px-4">
           <div className="max-w-7xl mx-auto">
             <div className="relative bg-white rounded-lg overflow-hidden border border-border shadow-lg">
@@ -268,6 +293,7 @@ const Franchise = () => {
               </div>
             </div>
           </div>
+        </div>
         </div>
       </section>
 

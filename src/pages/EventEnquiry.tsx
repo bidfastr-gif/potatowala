@@ -9,6 +9,7 @@ import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { z } from "zod";
 import emailjs from "@emailjs/browser";
+import pattern from "@/assets/food-pattern.jpg";
 
 const eventEnquirySchema = z.object({
   name: z.string().trim().min(1, "Name is required").max(100, "Name must be less than 100 characters"),
@@ -170,7 +171,19 @@ const EventEnquiry = () => {
 
       <PageHero title="Event Enquiry" current="Event Enquiry" />
 
-      <main className="container mx-auto px-4 py-16">
+      <main className="container mx-auto px-4 py-16 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${pattern})`,
+              backgroundSize: "auto",
+              backgroundRepeat: "repeat",
+            }}
+          />
+        </div>
+        <div className="relative z-10">
         <section className="max-w-3xl mx-auto bg-card border rounded-lg shadow-sm p-8 space-y-8">
           <div className="text-center space-y-2">
             <h1 className="text-3xl md:text-4xl font-bold">Plan Your Event with Potatowala</h1>
@@ -300,6 +313,7 @@ const EventEnquiry = () => {
             We&apos;ll get back to you within 24–48 hours. For urgent enquiries, please contact your nearest Potatowala outlet directly.
           </p>
         </section>
+        </div>
       </main>
 
       <Footer />

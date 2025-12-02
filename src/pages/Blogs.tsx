@@ -13,6 +13,7 @@ import chocoSpring from "@/assets/choco-spring.jpg";
 import aboutChef from "@/assets/about-chef.jpg";
 import aboutFood1 from "@/assets/about-food-1.jpg";
 import aboutFood2 from "@/assets/about-food-2.jpg";
+import pattern from "@/assets/food-pattern.jpg";
 
 const Blogs = () => {
   const blogPosts = [
@@ -209,7 +210,19 @@ const Blogs = () => {
       <Header />
       <PageHero title="Our Blog" current="Blog" />
       
-      <main className="container mx-auto px-4 py-16">
+      <main className="container mx-auto px-4 py-16 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${pattern})`,
+              backgroundSize: "auto",
+              backgroundRepeat: "repeat",
+            }}
+          />
+        </div>
+        <div className="relative z-10">
         {/* Featured Posts Section */}
         {featuredPosts.length > 0 && (
           <div className="mb-16">
@@ -320,6 +333,7 @@ const Blogs = () => {
             <EmailSubscription />
           </CardContent>
         </Card>
+        </div>
       </main>
 
       <Footer />

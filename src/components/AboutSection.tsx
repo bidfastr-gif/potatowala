@@ -1,6 +1,7 @@
 import aboutStory1 from "@/assets/about-story-1.jpg";
 import aboutStory2 from "@/assets/about-story-2.jpg";
 import aboutStory3 from "@/assets/about-story-3.jpg";
+import pattern from "@/assets/food-pattern.jpg";
 
 export const AboutSection = () => {
   // Stats used in the content section
@@ -64,8 +65,19 @@ export const AboutSection = () => {
   ];
 
   return (
-    <section id="about" className="py-24 bg-background">
-      <div className="container mx-auto px-4">
+    <section id="about" className="py-24 bg-background relative overflow-hidden">
+      {/* Background Pattern */}
+      <div className="absolute inset-0 opacity-[0.08]">
+        <div
+          className="absolute inset-0"
+          style={{
+            backgroundImage: `url(${pattern})`,
+            backgroundSize: "auto",
+            backgroundRepeat: "repeat",
+          }}
+        />
+      </div>
+      <div className="container mx-auto px-4 relative z-10">
         <div className="space-y-20">
           {/* Section 1 - Text left, Image right (like 'Our Mission') */}
           <div className="grid md:grid-cols-2 gap-12 items-center">

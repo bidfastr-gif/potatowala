@@ -1,6 +1,7 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
+import pattern from "@/assets/food-pattern.jpg";
 import heroFries from "@/assets/hero-loaded-fries.jpg";
 import fries6mm from "@/assets/fries-6mm.JPG";
 import potatoWedgesImg from "@/assets/potato-wedges.JPG";
@@ -191,7 +192,19 @@ const FrozenFood = () => {
 
       <PageHero title="Our Frozen Products" current="Frozen Food" />
 
-      <main className="container mx-auto px-4 py-16">
+      <main className="container mx-auto px-4 py-16 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${pattern})`,
+              backgroundSize: "auto",
+              backgroundRepeat: "repeat",
+            }}
+          />
+        </div>
+        <div className="relative z-10">
         {/* Intro section similar to reference layout */}
         <section className="max-w-3xl mx-auto text-center mb-12">
           <h2 className="text-3xl md:text-4xl font-bold mb-4">Our Products</h2>
@@ -209,7 +222,7 @@ const FrozenFood = () => {
           {frozenItems.map((item) => (
             <article
               key={item.name}
-              className="bg-card rounded-3xl shadow-sm border overflow-hidden flex flex-col hover:shadow-lg transition-shadow"
+              className="rounded-3xl shadow-sm border-2 border-primary overflow-hidden flex flex-col hover:shadow-lg transition-shadow bg-gradient-to-b from-black to-white"
             >
               <div className="aspect-[4/5] w-full overflow-hidden bg-muted">
                 <img
@@ -218,7 +231,7 @@ const FrozenFood = () => {
                   className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              <div className="px-6 py-6 flex-1 flex flex-col text-left">
+              <div className="px-6 py-6 flex-1 flex flex-col text-left bg-white">
                 <h3 className="text-lg md:text-xl font-semibold mb-1">{item.name}</h3>
                 <p className="text-xs md:text-sm font-semibold text-primary mb-3 uppercase tracking-wide">
                   {item.packInfo}
@@ -232,6 +245,7 @@ const FrozenFood = () => {
             </article>
           ))}
         </section>
+        </div>
       </main>
 
       <Footer />

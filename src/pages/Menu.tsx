@@ -9,6 +9,7 @@ import springPotato from "@/assets/spring-potato.jpg";
 import nachos from "@/assets/nachos.jpg";
 import funkyChips from "@/assets/funky-chips.jpg";
 import mojito from "@/assets/mojito.jpg";
+import pattern from "@/assets/food-pattern.jpg";
 
 interface MenuCategory {
   title: string;
@@ -502,7 +503,19 @@ const Menu = () => {
       <Header />
       <PageHero title="Our Menu" current="Menu" />
       
-      <main className="container mx-auto px-4 py-16">
+      <main className="container mx-auto px-4 py-16 relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${pattern})`,
+              backgroundSize: "auto",
+              backgroundRepeat: "repeat",
+            }}
+          />
+        </div>
+        <div className="relative z-10">
         {/* Intro section inspired by reference layout */}
         <section className="max-w-4xl mx-auto text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
@@ -562,6 +575,7 @@ const Menu = () => {
             </div>
           ))}
         </section>
+        </div>
       </main>
 
       <Footer />

@@ -5,17 +5,31 @@ import { AboutSection } from "@/components/AboutSection";
 import { StatisticsBanner } from "@/components/StatisticsBanner";
 import { WhyChooseUs } from "@/components/WhyChooseUs";
 import { Footer } from "@/components/Footer";
+import pattern from "@/assets/food-pattern.jpg";
 
 const Index = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-background">
       <Header />
-      <main>
-        <Hero />
-        <Categories />
-        <AboutSection />
-        <StatisticsBanner />
-        <WhyChooseUs />
+      <main className="relative overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${pattern})`,
+              backgroundSize: "auto",
+              backgroundRepeat: "repeat",
+            }}
+          />
+        </div>
+        <div className="relative z-10">
+          <Hero />
+          <Categories />
+          <AboutSection />
+          <StatisticsBanner />
+          <WhyChooseUs />
+        </div>
       </main>
       <Footer />
     </div>
