@@ -1,80 +1,173 @@
-import { Button } from "@/components/ui/button";
-import { Play } from "lucide-react";
-import heroImage from "@/assets/hero-loaded-fries.jpg";
+
+import { useState } from "react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import loadedFries from "@/assets/hero-loaded-fries.jpg";
+import chocoSpringPlaceholder from "@/assets/choco-spring.jpg";
+import nachosPlaceholder from "@/assets/nachos.jpg";
+import springPotatoPlaceholder from "@/assets/spring-potato.jpg";
+
+interface HeroSlide {
+  title: string;
+  subtitle: string;
+  description: string;
+  image: string;
+}
+
+const slides: HeroSlide[] = [
+  {
+    title: "Drippin' in Indulgence",
+    subtitle: "Signature Loaded Fries",
+    description:
+      "Relish our chef-crafted loaded fries – stacked high with molten cheese, bold sauces and crispy toppings for the ultimate comfort bite.",
+    image: loadedFries,
+  },
+  {
+    title: "Choco Spring Magic",
+    subtitle: "Crispy • Chocolatey • Fun",
+    description:
+      "Crisp potato spirals dipped in rich chocolate – a playful fusion snack that’s perfect for dessert cravings and celebrations.",
+    image: chocoSpringPlaceholder,
+  },
+  {
+    title: "Nachos Overload",
+    subtitle: "Layered with Flavour",
+    description:
+      "Golden nachos loaded with cheese, jalapeños and our secret sauces, creating an explosion of flavours in every crunchy bite.",
+    image: nachosPlaceholder,
+  },
+  {
+    title: "Spring Potato Fiesta",
+    subtitle: "Street-Style Favourite",
+    description:
+      "Our iconic spring potatoes – crispy on the outside, fluffy inside, finished with bold seasonings that keep you coming back.",
+    image: springPotatoPlaceholder,
+  },
+];
 
 export const Hero = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const goToSlide = (index: number) => {
+    if (index < 0) {
+      setCurrentIndex(slides.length - 1);
+    } else if (index >= slides.length) {
+      setCurrentIndex(0);
+    } else {
+      setCurrentIndex(index);
+    }
+  };
+
+  const currentSlide = slides[currentIndex];
+
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden bg-cream">
-      <div className="container mx-auto px-4 py-20 relative z-10">
-        <div className="grid lg:grid-cols-2 gap-12 items-center">
-          {/* Left Content */}
-          <div className="space-y-8">
-            <div className="inline-flex items-center gap-2 bg-primary/10 px-5 py-2.5 rounded-md">
-              <svg className="w-5 h-5 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-              <span className="text-sm font-medium text-primary uppercase tracking-wider">Welcome to Potatowala</span>
-            </div>
-            
-            <h1 className="text-6xl lg:text-7xl xl:text-8xl font-bold leading-[1.1] text-foreground">
-              Sip & Chew
-              <br />
-              <span className="text-primary">Loaded Fries</span>
-            </h1>
-            
-            <p className="text-lg lg:text-xl text-muted-foreground max-w-xl leading-relaxed">
-              From tasty bites to cool sips, all in one plate. Experience the perfect blend of crispy, cheesy, and absolutely delicious loaded fries.
-            </p>
-            
-            <div className="flex flex-wrap gap-5 pt-2">
-              <Button size="lg" className="hero-gradient hover:opacity-90 transition-opacity text-base px-8 py-6 h-auto rounded-md">
-                Franchise Enquiry
-                <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </Button>
-              
-              <button className="flex items-center gap-3 group">
-                <div className="w-14 h-14 rounded-full bg-primary flex items-center justify-center group-hover:scale-110 transition-transform shadow-lg">
-                  <Play className="w-5 h-5 text-primary-foreground fill-primary-foreground ml-0.5" />
-                </div>
-              </button>
+    <section
+      id="home"
+      className="relative min-h-[80vh] lg:min-h-screen flex items-center overflow-hidden bg-black"
+    >
+      {/* Background image like reference site */}
+      <div className="absolute inset-0">
+        {slides.map((slide, index) => (
+          <div
+            key={slide.title}
+            className={`absolute inset-0 transition-opacity duration-700 ${
+              index === currentIndex ? "opacity-100" : "opacity-0"
+            }`}
+          >
+            <img
+              src={slide.image}
+              alt={slide.title}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ))}
+        {/* Dark gradient overlay for text readability */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/60 to-black/20" />
+      </div>
+
+      {/* Content overlay */}
+      <div className="relative z-10 w-full">
+        <div className="container mx-auto px-4 py-16 lg:py-24 flex flex-col lg:flex-row items-center gap-10">
+          {/* Left – Text block similar to waffle hero */}
+          <div className="max-w-xl text-white space-y-6">
+            <div className="inline-flex items-center px-4 py-1.5 bg-white/10 border border-white/30 rounded-full text-xs md:text-sm tracking-[0.2em] uppercase">
+              New Drop!
             </div>
 
-            {/* Stats Badges */}
-            <div className="flex flex-wrap gap-4 pt-6">
-              <div className="bg-card border border-border rounded-xl px-6 py-4 shadow-sm">
-                <div className="flex items-center gap-3">
-                  <div className="flex -space-x-2">
-                    <div className="w-10 h-10 rounded-full bg-primary/20 border-2 border-card flex items-center justify-center text-sm font-bold">👨‍🍳</div>
-                    <div className="w-10 h-10 rounded-full bg-accent/20 border-2 border-card flex items-center justify-center text-sm font-bold">👨‍🍳</div>
-                    <div className="w-10 h-10 rounded-full bg-secondary border-2 border-card flex items-center justify-center text-sm font-bold">👨‍🍳</div>
-                  </div>
-                  <div>
-                    <p className="font-bold text-foreground">200+</p>
-                    <p className="text-sm text-muted-foreground">Satisfied Customers</p>
-                  </div>
-                </div>
-              </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+              {currentSlide.title}
+            </h1>
+
+            <p className="text-lg md:text-xl text-amber-200 font-semibold">
+              {currentSlide.subtitle}
+            </p>
+
+            <p className="text-sm md:text-base text-white/80 max-w-lg">
+              {currentSlide.description}
+            </p>
+
+            <div className="mt-6">
+              <DropdownMenu>
+                <DropdownMenuTrigger asChild>
+                  <button className="inline-flex items-center px-5 py-3 rounded-full bg-amber-400 text-black font-semibold shadow-lg text-sm md:text-base hover:bg-amber-300 transition-colors">
+                    For Enquiry
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent className="bg-card border-border z-50 min-w-[220px]">
+                  <DropdownMenuItem asChild>
+                    <a href="/event-enquiry" className="w-full cursor-pointer">
+                      Event Enquiry
+                    </a>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <a href="/franchise-enquiry" className="w-full cursor-pointer">
+                      Franchise Enquiry
+                    </a>
+                  </DropdownMenuItem>
+                </DropdownMenuContent>
+              </DropdownMenu>
             </div>
           </div>
-          
-          {/* Right Image */}
-          <div className="relative lg:block">
-            <div className="relative">
-              <div className="relative z-10 rounded-full overflow-hidden w-[500px] h-[500px] mx-auto">
-                <img 
-                  src={heroImage} 
-                  alt="Loaded Fries" 
-                  className="w-full h-full object-cover scale-150"
-                />
-              </div>
-            </div>
-            
-            {/* Decorative Background Elements */}
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-gradient-to-br from-primary/5 to-accent/5 rounded-full -z-10" />
-          </div>
+
+          {/* Right – empty spacer to mimic layout / keep CTA uncluttered */}
+          <div className="hidden lg:block flex-1" />
         </div>
+      </div>
+
+      {/* Manual navigation arrows like reference */}
+      <button
+        onClick={() => goToSlide(currentIndex - 1)}
+        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 rounded-full bg-black/60 hover:bg-black/80 text-white w-10 h-10 flex items-center justify-center transition-colors"
+        aria-label="Previous slide"
+      >
+        ‹
+      </button>
+      <button
+        onClick={() => goToSlide(currentIndex + 1)}
+        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 rounded-full bg-black/60 hover:bg-black/80 text-white w-10 h-10 flex items-center justify-center transition-colors"
+        aria-label="Next slide"
+      >
+        ›
+      </button>
+
+      {/* Dots indicator at bottom center */}
+      <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
+        {slides.map((slide, index) => (
+          <button
+            key={slide.title}
+            onClick={() => goToSlide(index)}
+            className={`h-2 rounded-full transition-all duration-300 ${
+              index === currentIndex
+                ? "bg-white w-6"
+                : "bg-white/40 w-2 hover:bg-white/70"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          />
+        ))}
       </div>
     </section>
   );

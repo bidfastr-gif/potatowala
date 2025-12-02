@@ -1,0 +1,49 @@
+═══════════════════════════════════════════════════════════
+  📧 EMAIL SETUP - QUICK GUIDE
+═══════════════════════════════════════════════════════════
+
+Choose ONE method:
+
+┌─────────────────────────────────────────────────────────┐
+│ METHOD 1: FORMSPREE (5 MINUTES - EASIEST)              │
+└─────────────────────────────────────────────────────────┘
+
+Step 1: Go to https://formspree.io/ → Sign Up
+
+Step 2: Click "New Form" → Set email to: vasanthb.gap@gmail.com
+
+Step 3: Copy Form ID (looks like: xeqwjzqk)
+
+Step 4: Open .env file → Add this line:
+       VITE_FORMSPREE_ID=xeqwjzqk
+       (Replace xeqwjzqk with your Form ID)
+
+Step 5: Restart server (Ctrl+C, then npm run dev)
+
+Step 6: Test form → Check email!
+
+
+┌─────────────────────────────────────────────────────────┐
+│ METHOD 2: SUPABASE + RESEND (15 MIN - PDF INCLUDED)    │
+└─────────────────────────────────────────────────────────┘
+
+Step 1: Get Resend API Key
+       → Go to https://resend.com/api-keys
+       → Create API Key → Copy it
+
+Step 2: Link Supabase
+       → Run: npx supabase link --project-ref qmoticehyqeglmejllzr
+
+Step 3: Set API Key
+       → Run: npx supabase secrets set RESEND_API_KEY=re_your_key
+
+Step 4: Deploy Function
+       → Run: npx supabase functions deploy send-franchise-email
+
+Step 5: Test form → Check email with PDF attachment!
+
+
+═══════════════════════════════════════════════════════════
+  📖 DETAILED GUIDE: See START_HERE_EMAIL_SETUP.md
+═══════════════════════════════════════════════════════════
+

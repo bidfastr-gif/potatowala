@@ -34,7 +34,7 @@ export const WhyChooseUs = () => {
         </svg>
       ),
       title: "FAST DELIVERY",
-      description: "Quick and reliable delivery service to get your food fresh and hot. Great taste at prices that won't break the bank.",
+      description: "Order online through Swiggy and Zomato or visit our multiple locations across Chennai. We ensure your food is prepared fresh and served hot, ready to satisfy your cravings.",
     },
   ];
 

@@ -1,5 +1,6 @@
 import logo from "@/assets/potatowala-logo.png";
 import pattern from "@/assets/food-pattern.jpg";
+import { EmailSubscription } from "@/components/EmailSubscription";
 
 export const Footer = () => {
   return (
@@ -34,7 +35,7 @@ export const Footer = () => {
               <li><a href="/" className="hover:text-primary-foreground/80 transition-colors">Home</a></li>
               <li><a href="/menu" className="hover:text-primary-foreground/80 transition-colors">Menu</a></li>
               <li><a href="/about" className="hover:text-primary-foreground/80 transition-colors">About Us</a></li>
-              <li><a href="#contact" className="hover:text-primary-foreground/80 transition-colors">Contact</a></li>
+              <li><a href="/contact" className="hover:text-primary-foreground/80 transition-colors">Contact</a></li>
             </ul>
           </div>
 
@@ -48,13 +49,9 @@ export const Footer = () => {
             </ul>
           </div>
 
-          {/* Hours */}
+          {/* Email Subscription */}
           <div>
-            <h4 className="font-bold mb-4">Opening Hours</h4>
-            <ul className="space-y-2 text-sm opacity-80">
-              <li>Monday - Friday: 11am - 10pm</li>
-              <li>Saturday - Sunday: 11am - 11pm</li>
-            </ul>
+            <EmailSubscription />
           </div>
         </div>
 
