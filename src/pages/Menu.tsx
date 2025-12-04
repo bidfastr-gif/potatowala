@@ -516,61 +516,46 @@ const Menu = () => {
           />
         </div>
         <div className="relative z-10">
-        {/* Intro section inspired by reference layout */}
+        {/* Intro section matching reference design */}
         <section className="max-w-4xl mx-auto text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-foreground">
-            Because Fries & Snacks Matter
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-foreground">
+            FRIES, SNACKS & MORE
           </h2>
-          <p className="text-muted-foreground text-lg">
-            Delicious from the very first bite to the last crunchy crumb. Explore our signature fries, snacks,
-            wraps, burgers, nachos, mojitos and desserts.
+          <p className="text-muted-foreground text-lg md:text-xl">
+            Delicious from the first bite to the last crumb!
           </p>
         </section>
 
-        {/* Text-first menu layout similar to waffle menu */}
-        <section className="max-w-6xl mx-auto space-y-12">
+        {/* Menu layout matching reference design */}
+        <section className="max-w-6xl mx-auto space-y-16">
           {menuCategories.map((category, categoryIndex) => (
-            <div
-              key={categoryIndex}
-              className="bg-card rounded-3xl border border-border shadow-sm px-6 py-8 md:px-10 md:py-10"
-            >
-              <div className="flex flex-col md:flex-row gap-8">
-                {/* Category Title */}
-                <div className="md:w-1/3">
-                  <h3 className="text-2xl md:text-3xl font-extrabold text-primary mb-2">
-                    {category.title}
-                  </h3>
-                  <div className="w-16 h-1 bg-primary rounded-full mb-3" />
-                  <p className="text-sm text-muted-foreground">
-                    Our chef-crafted selection of {category.title.toLowerCase()} made fresh to order.
-                  </p>
-                </div>
+            <div key={categoryIndex} className="space-y-6">
+              {/* Category Title */}
+              <h3 className="text-2xl md:text-3xl font-bold text-primary">
+                {category.title}
+              </h3>
 
-                {/* Items list in columns */}
-                <div className="md:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-4">
-                  {category.items.map((item, itemIndex) => (
-                    <div key={itemIndex} className="space-y-1">
-                      <div className="flex items-start gap-2">
-                        <span className="mt-1 h-1.5 w-1.5 rounded-full bg-primary flex-shrink-0" />
-                        <div>
-                          <h4 className="text-sm md:text-base font-semibold text-foreground">
-                            {item.name}
-                            {item.badge && (
-                              <span className="ml-2 inline-block rounded-full bg-primary text-primary-foreground text-[10px] px-2 py-0.5 align-middle">
-                                {item.badge}
-                              </span>
-                            )}
-                          </h4>
-                          {item.description && (
-                            <p className="text-xs md:text-sm text-muted-foreground leading-relaxed">
-                              {item.description}
-                            </p>
-                          )}
-                        </div>
-                      </div>
+              {/* Items in two-column grid */}
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+                {category.items.map((item, itemIndex) => (
+                  <div key={itemIndex} className="space-y-2">
+                    <div>
+                      <h4 className="text-base md:text-lg font-semibold text-foreground leading-tight">
+                        {item.name}
+                        {item.badge && (
+                          <span className="ml-2 inline-block rounded-full bg-primary text-primary-foreground text-[10px] font-bold px-2 py-0.5 align-middle">
+                            {item.badge}
+                          </span>
+                        )}
+                      </h4>
+                      {item.description && (
+                        <p className="text-sm text-muted-foreground leading-relaxed mt-1">
+                          {item.description}
+                        </p>
+                      )}
                     </div>
-                  ))}
-                </div>
+                  </div>
+                ))}
               </div>
             </div>
           ))}

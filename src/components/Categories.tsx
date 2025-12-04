@@ -57,7 +57,7 @@ export const Categories = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="relative mb-16 flex items-center justify-center">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
-            Our Best Menu
+            Best Seller
           </h2>
         </div>
 

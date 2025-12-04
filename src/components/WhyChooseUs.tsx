@@ -43,7 +43,7 @@ export const WhyChooseUs = () => {
       <div className="container mx-auto px-4">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Why Choose Our <span className="text-primary">Favorite Food</span>
+            Why Choose Potatowala?
           </h2>
         </div>
 
