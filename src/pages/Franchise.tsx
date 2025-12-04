@@ -68,6 +68,14 @@ const Franchise = () => {
       reviews: 93,
     },
     {
+      name: "Pallavaram",
+      address: "French Village Food Court, 200 Feet Radial Rd, Tiruthani Nagar, Pallavaram, Chennai, Tamil Nadu 600117",
+      image: "/api/placeholder/400/300", // TODO: Replace with actual store image (e.g., import pallavaramStore from "@/assets/stores/pallavaram-store.jpg")
+      coordinates: "12.9670,80.1500",
+      rating: 4.0,
+      reviews: 75,
+    },
+    {
       name: "Vellore - Hive Food Street",
       address:
         "Hive food street, 386/1, 3rd Rd, Vaibhav Nagar, Katpadi, Brahmapuram, Vellore, Tamil Nadu 632014",
