@@ -529,7 +529,10 @@ const Menu = () => {
         {/* Menu layout matching reference design */}
         <section className="max-w-6xl mx-auto space-y-16">
           {menuCategories.map((category, categoryIndex) => (
-            <div key={categoryIndex} className="space-y-6">
+            <div
+              key={categoryIndex}
+              className="space-y-6 rounded-3xl border border-primary/60 bg-card/40 px-4 py-6 md:px-8 md:py-8 shadow-sm"
+            >
               {/* Category Title */}
               <h3 className="text-2xl md:text-3xl font-bold text-primary">
                 {category.title}

@@ -10,18 +10,21 @@ import akkaraiStore from "@/assets/akkarai-store.jpg";
 import besantNagarStore from "@/assets/besant-nagar-store.jpg";
 import guindyStore from "@/assets/guindy-store.jpg";
 import velloreStore from "@/assets/vellore-store.jpg";
+import logo from "@/assets/potatowala-logo.png";
 
 interface StoreLocation {
   name: string;
   address: string;
   image: string;
+  district: "Chennai" | "Vellore";
   coordinates?: string;
   rating?: number;
   reviews?: number;
 }
 
 const Franchise = () => {
-  const [selectedStore, setSelectedStore] = useState<number>(4); // Default to Besant Nagar
+  const [selectedStore, setSelectedStore] = useState<number>(0); // Default to first Chennai store
+  const [selectedDistrict, setSelectedDistrict] = useState<"Chennai" | "Vellore">("Chennai");
 
   // Store locations with full addresses from the image
   // To add store images: Import them at the top and replace the image paths below
@@ -30,7 +33,8 @@ const Franchise = () => {
     {
       name: "Maduravoyal (Factory)",
       address: "187, Poonamallee High Road, Maduravoyal, Chennai - 600095",
-      image: "/api/placeholder/400/300", // TODO: Replace with actual store image (e.g., import maduravoyalStore from "@/assets/stores/maduravoyal.jpg")
+      image: logo,
+      district: "Chennai",
       coordinates: "13.0656,80.1650",
       rating: 4.0,
       reviews: 85,
@@ -39,7 +43,7 @@ const Franchise = () => {
       name: "Akkarai ECR",
       address: "The R's Food World, French Village Food Street, Sea Cliff Conclave, Akkarai, Panaiyur, Chennai, Tamil Nadu 600119",
       image: akkaraiStore,
-      coordinates: "12.9200,80.2600",
+      district: "Chennai",
       rating: 4.2,
       reviews: 120,
     },
@@ -47,6 +51,7 @@ const Franchise = () => {
       name: "Porur",
       address: "30, Arcot Rd, Thirumurugan Nagar, Porur, Chennai, Tamil Nadu 600125",
       image: porurFranchise,
+      district: "Chennai",
       coordinates: "13.0355,80.1556",
       rating: 4.1,
       reviews: 95,
@@ -55,6 +60,7 @@ const Franchise = () => {
       name: "Guindy",
       address: "Kathipara Flyover Bridge, Ramapuram, Guindy Industrial Estate, Chakrapani Colony, Guindy, St.Thomas Mount, Tamil Nadu 600032",
       image: guindyStore,
+      district: "Chennai",
       coordinates: "13.0067,80.2206",
       rating: 4.3,
       reviews: 110,
@@ -63,28 +69,40 @@ const Franchise = () => {
       name: "Besant Nagar",
       address: "14, TNHB Complex, 4th Main Rd, Elliots Beach, Besant Nagar, Chennai, Tamil Nadu 600090",
       image: besantNagarStore,
+      district: "Chennai",
       coordinates: "12.9980,80.2650",
       rating: 4.0,
       reviews: 93,
     },
     {
-      name: "Pallavaram",
+      name: "Pallavaram (Coming Soon)",
       address: "French Village Food Court, 200 Feet Radial Rd, Tiruthani Nagar, Pallavaram, Chennai, Tamil Nadu 600117",
       image: "/api/placeholder/400/300", // TODO: Replace with actual store image (e.g., import pallavaramStore from "@/assets/stores/pallavaram-store.jpg")
+      district: "Chennai",
       coordinates: "12.9670,80.1500",
       rating: 4.0,
       reviews: 75,
     },
     {
-      name: "Vellore - Hive Food Street",
+      name: "Katpadi - Hive Food Street",
       address:
         "Hive food street, 386/1, 3rd Rd, Vaibhav Nagar, Katpadi, Brahmapuram, Vellore, Tamil Nadu 632014",
       image: velloreStore,
+      district: "Vellore",
       // No coordinates provided – map will fall back to address search
       rating: 4.1,
       reviews: 60,
     },
   ];
+
+  const districts = ["Chennai", "Vellore"] as const;
+
+  const groupedStores = districts.map(district => ({
+    district,
+    stores: stores
+      .map((store, index) => ({ store, index }))
+      .filter(({ store }) => store.district === district),
+  }));
 
   // Helper function to generate Google Maps embed URL
   const getMapUrl = (coordinates?: string, address?: string) => {
@@ -140,7 +158,7 @@ const Franchise = () => {
         </div>
       </section>
 
-      {/* Store Listings Section */}
+      {/* Store Listings Section - Grouped by District (Chennai / Vellore) */}
       <section className="py-12 bg-background relative overflow-hidden">
         {/* Background Pattern */}
         <div className="absolute inset-0 opacity-[0.08] pointer-events-none">
@@ -154,51 +172,120 @@ const Franchise = () => {
           />
         </div>
         <div className="container mx-auto px-4 relative z-10">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
-            {stores.map((store, index) => (
-              <div
-                key={index}
-                onClick={() => setSelectedStore(index)}
-                className={`cursor-pointer transition-all duration-300 ${
-                  selectedStore === index
-                    ? "ring-2 ring-primary ring-offset-2"
-                    : "hover:shadow-lg"
-                }`}
-              >
-                <div className="bg-white rounded-lg overflow-hidden border border-border">
-                  {/* Store Image */}
-                  <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/20 to-primary/10">
-                    {store.image && store.image !== "/api/placeholder/400/300" ? (
-                      <img
-                        src={store.image}
-                        alt={`Potatowala ${store.name}`}
-                        className="w-full h-full object-contain hover:scale-105 transition-transform duration-300"
-                        onError={(e) => {
-                          const target = e.target as HTMLImageElement;
-                          target.style.display = "none";
-                        }}
-                      />
-                    ) : (
-                      <div className="w-full h-full flex items-center justify-center">
-                        <div className="text-center p-4">
-                          <div className="text-4xl mb-2">🏪</div>
-                          <div className="text-sm font-semibold text-primary">{store.name}</div>
+          <div className="max-w-5xl mx-auto space-y-6">
+            {groupedStores.map(({ district, stores }) => {
+              const isOpen = selectedDistrict === district;
+
+              return (
+                <div key={district} className="rounded-xl overflow-hidden border border-border bg-white">
+                  {/* District header like accordion */}
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setSelectedDistrict(district);
+                      const firstStoreIndex = stores[0]?.index;
+                      if (typeof firstStoreIndex === "number") {
+                        setSelectedStore(firstStoreIndex);
+                      }
+                    }}
+                    className={`w-full flex items-center justify-between px-4 md:px-6 py-4 md:py-5 text-left text-lg md:text-xl font-semibold transition-colors ${
+                      isOpen ? "bg-primary/10 text-foreground" : "bg-muted text-foreground"
+                    }`}
+                  >
+                    <span>{district}</span>
+                    <span className="text-sm">{isOpen ? "▾" : "▸"}</span>
+                  </button>
+
+                  {/* Store list for this district */}
+                  {isOpen && (
+                    <div className="divide-y divide-border">
+                      {stores.map(({ store, index }) => (
+                        <div
+                          key={store.name}
+                          className={`px-4 md:px-6 py-4 md:py-5 cursor-pointer ${
+                            selectedStore === index ? "bg-primary/5" : "bg-white"
+                          }`}
+                          onClick={() => setSelectedStore(index)}
+                        >
+                          <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-stretch">
+                            {/* Left side - Store info */}
+                            <div className="flex-1 flex flex-col gap-2">
+                              <h3 className="text-base md:text-lg font-bold text-foreground">
+                                {store.name}
+                              </h3>
+                              <p className="text-sm md:text-base text-muted-foreground leading-relaxed">
+                                {store.address}
+                              </p>
+                              <div className="mt-2 flex flex-wrap gap-2">
+                                <Button
+                                  variant="outline"
+                                  size="sm"
+                                  className="text-xs md:text-sm"
+                                  asChild
+                                  onClick={(e) => e.stopPropagation()}
+                                >
+                                  <a
+                                    href={`https://www.google.com/maps/dir/?api=1&destination=${encodeURIComponent(
+                                      store.address
+                                    )}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
+                                    Get Directions
+                                  </a>
+                                </Button>
+                                <Button
+                                  variant="ghost"
+                                  size="sm"
+                                  className="text-xs md:text-sm"
+                                  asChild
+                                  onClick={(e) => e.stopPropagation()}
+                                >
+                                  <a
+                                    href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(
+                                      store.address
+                                    )}`}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                  >
+                                    View on Map
+                                  </a>
+                                </Button>
+                              </div>
+                            </div>
+
+                            {/* Right side - Store image */}
+                            <div className="w-full md:w-60 lg:w-72 flex-shrink-0 md:self-stretch">
+                              <div className="relative aspect-[4/3] w-full overflow-hidden rounded-lg bg-white shadow-sm border-2 border-primary/70">
+                                {store.image && store.image !== "/api/placeholder/400/300" ? (
+                                  <img
+                                    src={store.image}
+                                    alt={`Potatowala ${store.name}`}
+                                    className="w-full h-full object-contain object-center bg-white"
+                                    onError={(e) => {
+                                      const target = e.target as HTMLImageElement;
+                                      target.style.display = "none";
+                                    }}
+                                  />
+                                ) : (
+                                  <div className="w-full h-full flex items-center justify-center">
+                                    <div className="text-center p-4">
+                                      <div className="text-4xl mb-2">🏪</div>
+                                      <div className="text-sm font-semibold text-primary">{store.name}</div>
+                                    </div>
+                                  </div>
+                                )}
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    )}
-                  </div>
-                  {/* Store Address */}
-                  <div className="p-4">
-                    <p className="text-sm text-muted-foreground leading-relaxed">
-                      {store.address}
-                    </p>
-                  </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
-        </div>
         </div>
       </section>
 

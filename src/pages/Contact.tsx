@@ -111,11 +111,11 @@ const Contact = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-center">
                   <div>
                     <p className="text-lg font-semibold mb-2">Monday - Friday</p>
-                    <p className="text-muted-foreground">11am - 10pm</p>
+                    <p className="text-muted-foreground">9:30am - 6:30pm</p>
                   </div>
                   <div>
                     <p className="text-lg font-semibold mb-2">Saturday - Sunday</p>
-                    <p className="text-muted-foreground">11am - 11pm</p>
+                    <p className="text-muted-foreground">9:30am - 6:30pm</p>
                   </div>
                 </div>
               </CardContent>

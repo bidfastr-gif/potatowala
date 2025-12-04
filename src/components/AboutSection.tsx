@@ -18,10 +18,10 @@ export const AboutSection = () => {
         />
       </div>
       <div className="container mx-auto px-4 relative z-10">
-        <div className="space-y-20">
+        <div className="space-y-20 max-w-6xl mx-auto">
           {/* Section 1 - Text left, Image right (like 'Our Mission') */}
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
+            <div className="space-y-6 md:pr-8 max-w-xl">
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 Welcome to Potatowala
               </h2>
@@ -36,14 +36,18 @@ export const AboutSection = () => {
                 bring joy to every bite. We use only the finest ingredients, premium potatoes, and our secret blend of
                 seasonings to deliver an unforgettable culinary experience.
               </p>
+              <p className="text-muted-foreground text-lg leading-relaxed">
+                Today, Potatowala stands for comfort food with a twist – from late‑night cravings to family outings,
+                our outlets are designed to be warm, vibrant spaces where every visit feels like a small celebration.
+              </p>
             </div>
 
             <div className="flex justify-center md:justify-end">
-              <div className="rounded-3xl overflow-hidden shadow-lg w-full sm:w-4/5 bg-white">
+              <div className="rounded-3xl overflow-hidden shadow-lg w-full sm:w-4/5 lg:w-2/3 bg-white">
                 <img
                   src={aboutStory1}
                   alt="Potatowala Story - Part 1"
-                  className="w-full h-auto min-h-[400px] object-contain hover:scale-105 transition-transform duration-500"
+                  className="w-full h-auto min-h-[320px] object-contain hover:scale-105 transition-transform duration-500"
                 />
               </div>
             </div>
@@ -52,16 +56,16 @@ export const AboutSection = () => {
           {/* Section 2 - Image left, Text right (like 'Our Story') */}
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="flex justify-center md:justify-start order-2 md:order-1">
-              <div className="rounded-3xl overflow-hidden shadow-lg w-full sm:w-4/5 bg-white">
+              <div className="w-full sm:w-full lg:w-11/12">
                 <img
                   src={aboutStory2}
                   alt="Potatowala Story - Part 2"
-                  className="w-full h-auto min-h-[400px] object-contain hover:scale-105 transition-transform duration-500"
+                  className="w-full h-auto min-h-[440px] object-contain hover:scale-105 transition-transform duration-500"
                 />
               </div>
             </div>
 
-            <div className="space-y-6 order-1 md:order-2">
+            <div className="space-y-6 order-1 md:order-2 md:pl-8 max-w-xl">
               <h3 className="text-3xl md:text-4xl font-bold leading-tight">Why Choose Us?</h3>
 
               <div className="space-y-4">
@@ -91,7 +95,7 @@ export const AboutSection = () => {
 
           {/* Section 3 - Text left, Image right (another alternating block) */}
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
+            <div className="space-y-6 md:pr-8 max-w-xl">
               <h3 className="text-3xl md:text-4xl font-bold leading-tight">How We Serve You</h3>
 
               <div className="space-y-4">
@@ -107,15 +111,21 @@ export const AboutSection = () => {
                 <p className="text-muted-foreground text-lg leading-relaxed">
                   <strong className="text-foreground">Dine-In & Delivery:</strong> Enjoy Potatowala at our outlets or order online via leading delivery partners for the same hot, crispy taste at home.
                 </p>
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  <strong className="text-foreground">Freshly Made, Every Time:</strong> We avoid pre-cooked or frozen fries for our outlets – every batch is fried to order so you always get that hot, crunchy first bite.
+                </p>
+                <p className="text-muted-foreground text-lg leading-relaxed">
+                  <strong className="text-foreground">Made for Sharing:</strong> Generous portions and customisable toppings make our dishes perfect for friends, families, and office teams to share and enjoy together.
+                </p>
               </div>
             </div>
 
             <div className="flex justify-center md:justify-end">
-              <div className="rounded-3xl overflow-hidden shadow-lg w-full sm:w-4/5 bg-white">
+              <div className="rounded-3xl overflow-hidden shadow-lg w-full sm:w-4/5 lg:w-2/3 bg-white">
                 <img
                   src={aboutStory3}
                   alt="Potatowala Story - Part 3"
-                  className="w-full h-auto min-h-[400px] object-contain hover:scale-105 transition-transform duration-500"
+                  className="w-full h-auto min-h-[320px] object-contain hover:scale-105 transition-transform duration-500"
                 />
               </div>
             </div>

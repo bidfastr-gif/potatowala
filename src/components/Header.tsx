@@ -42,7 +42,7 @@ export const Header = () => {
               <a href="/" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium">Home</a>
               <a href="/about" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium">About</a>
               <a href="/menu" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium">Menu</a>
-              <a href="/franchise" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium">Our Franchise</a>
+              <a href="/franchise" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium">Store Locator</a>
               
               {/* For Enquiry dropdown: Event / Franchise */}
               <DropdownMenu>
