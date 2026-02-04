@@ -32,10 +32,8 @@ export const AboutSection = () => {
                 plate to thousands of satisfied customers across Chennai and beyond.
               </p>
               <p className="text-muted-foreground text-lg leading-relaxed">
-                Our journey began with a simple mission: to create the crispiest, most delicious loaded fries that
-                bring joy to every bite. We use only the finest ingredients, premium potatoes, and our secret blend of
-                seasonings to deliver an unforgettable culinary experience.
-              </p>
+                Our journey began with a simple mission: to elevate potatoes into irresistibly crispy, delicious creations that bring joy to every bite. We use only the finest ingredients, premium potatoes, and our secret blend of seasonings to deliver an unforgettable culinary experience.
+                </p>
               <p className="text-muted-foreground text-lg leading-relaxed">
                 Today, Potatowala stands for comfort food with a twist – from late‑night cravings to family outings,
                 our outlets are designed to be warm, vibrant spaces where every visit feels like a small celebration.
@@ -86,8 +84,7 @@ export const AboutSection = () => {
                 </p>
                 <p className="text-muted-foreground text-lg leading-relaxed">
                   <strong className="text-foreground">Affordable Excellence:</strong> We believe that great food should
-                  be accessible to everyone. Our prices are competitive without compromising on quality, making premium
-                  loaded fries available to all.
+                  be accessible to everyone. Our prices are competitive without compromising on quality, making premium Fries available to all.
                 </p>
               </div>
             </div>

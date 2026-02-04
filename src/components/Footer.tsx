@@ -24,7 +24,7 @@ export const Footer = () => {
               style={{ imageRendering: 'crisp-edges' }}
             />
             <p className="text-sm opacity-80 mb-4">
-              From tasty bites to cool sips, all in one plate. Experience the best loaded fries in town.
+              From tasty bites to cool sips, all in one plate. Experience the best fries in town.
             </p>
           </div>
 
