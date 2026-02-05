@@ -84,7 +84,7 @@ export const AboutSection = () => {
                 </p>
                 <p className="text-muted-foreground text-lg leading-relaxed">
                   <strong className="text-foreground">Affordable Excellence:</strong> We believe that great food should
-                  be accessible to everyone. Our prices are competitive without compromising on quality, making premium Fries available to all.
+                  be accessible to everyone. Our prices are competitive without compromising on quality, making premium fries available to all.
                 </p>
               </div>
             </div>
