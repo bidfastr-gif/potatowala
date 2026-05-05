@@ -25,14 +25,14 @@ export const Header = () => {
             backgroundRepeat: 'repeat'
           }} />
         </div>
-        <div className="container mx-auto px-4 py-3 relative z-10">
+        <div className="container mx-auto px-4 py-2 relative z-10">
           <div className="flex items-center justify-between">
             {/* Logo */}
             <div className="flex items-center gap-3">
               <img 
                 src={logo} 
                 alt="potatowala Logo" 
-                className="h-20 md:h-24 w-auto object-contain"
+                className="h-14 md:h-16 w-auto object-contain"
                 style={{ imageRendering: 'crisp-edges' }}
               />
             </div>
@@ -41,6 +41,7 @@ export const Header = () => {
             <nav className="hidden md:flex items-center gap-8">
               <a href="/" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium">Home</a>
               <a href="/about" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium">About</a>
+              <a href="/frozen-food" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium">Frozen Food</a>
               <a href="/menu" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium">Menu</a>
               <a href="/franchise" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium">Store Locator</a>
               
@@ -62,7 +63,6 @@ export const Header = () => {
                   </DropdownMenuItem>
                 </DropdownMenuContent>
               </DropdownMenu>
-              <a href="/frozen-food" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium">Frozen Food</a>
 
               <DropdownMenu>
                 <DropdownMenuTrigger className="flex items-center gap-1 text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium outline-none">

@@ -1,15 +1,14 @@
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import loadedFries from "@/assets/hero-loaded-fries.jpg";
-import chocoSpringPlaceholder from "@/assets/choco-spring.jpg";
-import nachosPlaceholder from "@/assets/nachos.jpg";
-import springPotatoPlaceholder from "@/assets/spring-potato.jpg";
+import farmingPhase from "@/assets/potato-harvest-clear.png";
+import manufacturingPhase from "@/assets/frozen-products-collage.png";
+import foodItemsCollage from "@/assets/food-items-collage.jpg";
 
 interface HeroSlide {
   title: string;
@@ -20,32 +19,25 @@ interface HeroSlide {
 
 const slides: HeroSlide[] = [
   {
-    title: "Drippin' in Indulgence",
-    subtitle: "Signature Loaded Fries",
+    title: "From the Roots of Quality",
+    subtitle: "1st Phase: Potato Farming",
     description:
-      "Relish our chef-crafted loaded fries – stacked high with molten cheese, bold sauces and crispy toppings for the ultimate comfort bite.",
-    image: loadedFries,
+      "We start at the source, ensuring only the finest potatoes are grown with care in our dedicated farms for the perfect crunch.",
+    image: farmingPhase,
   },
   {
-    title: "Choco Spring Magic",
-    subtitle: "Crispy • Chocolatey • Fun",
+    title: "State-of-the-Art Processing",
+    subtitle: "2nd Phase: Frozen Foods Manufacturing By Own",
     description:
-      "Crisp potato spirals dipped in rich chocolate – a playful fusion snack that’s perfect for dessert cravings and celebrations.",
-    image: chocoSpringPlaceholder,
+      "Our potatoes are processed in our own advanced facilities, maintaining the highest hygiene and quality standards for our frozen range.",
+    image: manufacturingPhase,
   },
   {
-    title: "Nachos Overload",
-    subtitle: "Layered with Flavour",
+    title: "Served Fresh & Hot",
+    subtitle: "3rd Phase: Food Items in Potatowala",
     description:
-      "Golden nachos loaded with cheese, jalapeños and our secret sauces, creating an explosion of flavours in every crunchy bite.",
-    image: nachosPlaceholder,
-  },
-  {
-    title: "Spring Potato Fiesta",
-    subtitle: "Street-Style Favourite",
-    description:
-      "Our iconic spring potatoes – crispy on the outside, fluffy inside, finished with bold seasonings that keep you coming back.",
-    image: springPotatoPlaceholder,
+      "Experience the final transformation of our premium potatoes into delicious, loaded snacks served fresh at our outlets.",
+    image: foodItemsCollage,
   },
 ];
 
@@ -62,6 +54,14 @@ export const Hero = () => {
     }
   };
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      goToSlide(currentIndex + 1);
+    }, 5000); // Change slide every 5 seconds
+
+    return () => clearInterval(timer);
+  }, [currentIndex]);
+
   const currentSlide = slides[currentIndex];
 
   return (
@@ -74,9 +74,8 @@ export const Hero = () => {
         {slides.map((slide, index) => (
           <div
             key={slide.title}
-            className={`absolute inset-0 transition-opacity duration-700 ${
-              index === currentIndex ? "opacity-100" : "opacity-0"
-            }`}
+            className={`absolute inset-0 transition-opacity duration-700 ${index === currentIndex ? "opacity-100" : "opacity-0"
+              }`}
           >
             <img
               src={slide.image}
@@ -85,8 +84,8 @@ export const Hero = () => {
             />
           </div>
         ))}
-        {/* Dark gradient overlay for text readability */}
-        <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/60 to-black/20" />
+        {/* Dark gradient overlay for text readability and cinematic feel */}
+        <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/20" />
       </div>
 
       {/* Content overlay */}
@@ -94,26 +93,22 @@ export const Hero = () => {
         <div className="container mx-auto px-4 py-16 lg:py-24 flex flex-col lg:flex-row items-center gap-10">
           {/* Left – Text block similar to waffle hero */}
           <div className="max-w-xl text-white space-y-6">
-            <div className="inline-flex items-center px-4 py-1.5 bg-white/10 border border-white/30 rounded-full text-xs md:text-sm tracking-[0.2em] uppercase">
-              New Drop!
-            </div>
-
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold leading-tight text-primary">
               {currentSlide.title}
             </h1>
 
-            <p className="text-lg md:text-xl text-amber-200 font-semibold">
+            <p className="text-lg md:text-xl text-white font-bold tracking-wide">
               {currentSlide.subtitle}
             </p>
 
-            <p className="text-sm md:text-base text-white/80 max-w-lg">
+            <p className="text-sm md:text-base text-white/90 max-w-lg font-medium">
               {currentSlide.description}
             </p>
 
             <div className="mt-6">
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
-                  <button className="inline-flex items-center px-5 py-3 rounded-full bg-amber-400 text-black font-semibold shadow-lg text-sm md:text-base hover:bg-amber-300 transition-colors">
+                  <button className="inline-flex items-center px-5 py-3 rounded-full bg-primary text-primary-foreground font-semibold shadow-lg text-sm md:text-base hover:bg-primary/90 transition-colors">
                     For Enquiry
                   </button>
                 </DropdownMenuTrigger>
@@ -138,21 +133,7 @@ export const Hero = () => {
         </div>
       </div>
 
-      {/* Manual navigation arrows like reference */}
-      <button
-        onClick={() => goToSlide(currentIndex - 1)}
-        className="absolute left-4 top-1/2 -translate-y-1/2 z-20 rounded-full bg-black/60 hover:bg-black/80 text-white w-10 h-10 flex items-center justify-center transition-colors"
-        aria-label="Previous slide"
-      >
-        ‹
-      </button>
-      <button
-        onClick={() => goToSlide(currentIndex + 1)}
-        className="absolute right-4 top-1/2 -translate-y-1/2 z-20 rounded-full bg-black/60 hover:bg-black/80 text-white w-10 h-10 flex items-center justify-center transition-colors"
-        aria-label="Next slide"
-      >
-        ›
-      </button>
+
 
       {/* Dots indicator at bottom center */}
       <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-20">
@@ -160,11 +141,10 @@ export const Hero = () => {
           <button
             key={slide.title}
             onClick={() => goToSlide(index)}
-            className={`h-2 rounded-full transition-all duration-300 ${
-              index === currentIndex
+            className={`h-2 rounded-full transition-all duration-300 ${index === currentIndex
                 ? "bg-white w-6"
                 : "bg-white/40 w-2 hover:bg-white/70"
-            }`}
+              }`}
             aria-label={`Go to slide ${index + 1}`}
           />
         ))}

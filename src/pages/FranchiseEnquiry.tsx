@@ -17,12 +17,8 @@ const franchiseEnquirySchema = z.object({
   email: z.string().trim().email("Invalid email address").max(255, "Email must be less than 255 characters"),
   phone: z.string().trim().min(10, "Phone number must be at least 10 digits").max(15, "Phone number must be less than 15 characters"),
   location: z.string().trim().min(1, "Location preference is required").max(200, "Location must be less than 200 characters"),
-  investment: z.string().trim().max(100, "Investment range must be less than 100 characters").optional(),
-  franchiseType: z.string().optional(),
-  businessExperience: z.string().optional(),
   expectedOpeningDate: z.string().optional(),
   currentOccupation: z.string().optional(),
-  previousFranchiseExperience: z.string().optional(),
   message: z.string().trim().min(10, "Message must be at least 10 characters").max(1000, "Message must be less than 1000 characters"),
 });
 
@@ -31,12 +27,8 @@ const FranchiseEnquiry = () => {
   const [email, setEmail] = useState("");
   const [phone, setPhone] = useState("");
   const [location, setLocation] = useState("");
-  const [investment, setInvestment] = useState("");
-  const [franchiseType, setFranchiseType] = useState("");
-  const [businessExperience, setBusinessExperience] = useState("");
   const [expectedOpeningDate, setExpectedOpeningDate] = useState("");
   const [currentOccupation, setCurrentOccupation] = useState("");
-  const [previousFranchiseExperience, setPreviousFranchiseExperience] = useState("");
   const [message, setMessage] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const { toast } = useToast();
@@ -51,12 +43,8 @@ const FranchiseEnquiry = () => {
         email,
         phone,
         location,
-        investment: investment || undefined,
-        franchiseType: franchiseType || undefined,
-        businessExperience: businessExperience || undefined,
         expectedOpeningDate: expectedOpeningDate || undefined,
         currentOccupation: currentOccupation || undefined,
-        previousFranchiseExperience: previousFranchiseExperience || undefined,
         message,
       });
 
@@ -76,12 +64,8 @@ const FranchiseEnquiry = () => {
             email: validatedData.email,
             phone: validatedData.phone,
             location: validatedData.location,
-            investment_range: validatedData.investment || null,
-            franchise_type: validatedData.franchiseType || null,
-            business_experience: validatedData.businessExperience || null,
             expected_opening_date: validatedData.expectedOpeningDate || null,
             current_occupation: validatedData.currentOccupation || null,
-            previous_franchise_experience: validatedData.previousFranchiseExperience || null,
             message: validatedData.message,
           } as any,
         ])
@@ -130,12 +114,8 @@ const FranchiseEnquiry = () => {
               formData.append("email", validatedData.email);
               formData.append("phone", validatedData.phone);
               formData.append("location", validatedData.location);
-              formData.append("investment", validatedData.investment || "Not specified");
-              formData.append("franchiseType", validatedData.franchiseType || "Not specified");
-              formData.append("businessExperience", validatedData.businessExperience || "Not specified");
               formData.append("expectedOpeningDate", validatedData.expectedOpeningDate || "Not specified");
               formData.append("currentOccupation", validatedData.currentOccupation || "Not specified");
-              formData.append("previousFranchiseExperience", validatedData.previousFranchiseExperience || "Not specified");
               formData.append("message", validatedData.message);
               formData.append("_subject", `New Franchise Enquiry from ${validatedData.name}`);
 
@@ -190,12 +170,8 @@ const FranchiseEnquiry = () => {
               from_email: validatedData.email,
               phone: validatedData.phone,
               location: validatedData.location,
-              investment: validatedData.investment || "Not specified",
-              franchiseType: validatedData.franchiseType || "Not specified",
-              businessExperience: validatedData.businessExperience || "Not specified",
               expectedOpeningDate: validatedData.expectedOpeningDate || "Not specified",
               currentOccupation: validatedData.currentOccupation || "Not specified",
-              previousFranchiseExperience: validatedData.previousFranchiseExperience || "Not specified",
               message: validatedData.message,
               subject: `New Franchise Enquiry from ${validatedData.name}`,
             };
@@ -217,12 +193,8 @@ const FranchiseEnquiry = () => {
                 email: validatedData.email,
                 phone: validatedData.phone,
                 location: validatedData.location,
-                investment: validatedData.investment || undefined,
-                franchiseType: validatedData.franchiseType || undefined,
-                businessExperience: validatedData.businessExperience || undefined,
                 expectedOpeningDate: validatedData.expectedOpeningDate || undefined,
                 currentOccupation: validatedData.currentOccupation || undefined,
-                previousFranchiseExperience: validatedData.previousFranchiseExperience || undefined,
                 message: validatedData.message,
               },
             });
@@ -349,12 +321,8 @@ const FranchiseEnquiry = () => {
                   email: validatedData.email,
                   phone: validatedData.phone,
                   location: validatedData.location,
-                  investment: validatedData.investment || "Not specified",
-                  franchiseType: validatedData.franchiseType || "Not specified",
-                  businessExperience: validatedData.businessExperience || "Not specified",
                   expectedOpeningDate: validatedData.expectedOpeningDate || "Not specified",
                   currentOccupation: validatedData.currentOccupation || "Not specified",
-                  previousFranchiseExperience: validatedData.previousFranchiseExperience || "Not specified",
                   message: validatedData.message,
                 }),
               });
@@ -410,12 +378,8 @@ const FranchiseEnquiry = () => {
       setEmail("");
       setPhone("");
       setLocation("");
-      setInvestment("");
-      setFranchiseType("");
-      setBusinessExperience("");
       setExpectedOpeningDate("");
       setCurrentOccupation("");
-      setPreviousFranchiseExperience("");
       setMessage("");
     } catch (error) {
       if (error instanceof z.ZodError) {
@@ -700,34 +664,6 @@ const FranchiseEnquiry = () => {
                   />
                 </div>
                 <div className="space-y-2">
-                  <Label htmlFor="franchiseType">Franchise Type</Label>
-                  <Select value={franchiseType} onValueChange={setFranchiseType}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select franchise type" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="standard">Standard Franchise</SelectItem>
-                      <SelectItem value="master">Master Franchise</SelectItem>
-                      <SelectItem value="area-development">Area Development</SelectItem>
-                      <SelectItem value="not-sure">Not Sure Yet</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="investment">Investment Range</Label>
-                  <Input
-                    id="investment"
-                    type="text"
-                    placeholder="e.g., 10-20 Lakhs"
-                    value={investment}
-                    onChange={(e) => setInvestment(e.target.value)}
-                    maxLength={100}
-                  />
-                </div>
-                <div className="space-y-2">
                   <Label htmlFor="expectedOpeningDate">Expected Opening Date</Label>
                   <Input
                     id="expectedOpeningDate"
@@ -740,42 +676,7 @@ const FranchiseEnquiry = () => {
                 </div>
               </div>
 
-              <div className="border-b pb-4 mb-6 mt-8">
-                <h3 className="text-2xl font-bold mb-2">Experience & Background</h3>
-                <p className="text-sm text-muted-foreground">Help us understand your background</p>
-              </div>
 
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-2">
-                  <Label htmlFor="businessExperience">Business Experience</Label>
-                  <Select value={businessExperience} onValueChange={setBusinessExperience}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select experience level" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="none">No Business Experience</SelectItem>
-                      <SelectItem value="1-2">1-2 Years</SelectItem>
-                      <SelectItem value="3-5">3-5 Years</SelectItem>
-                      <SelectItem value="5-10">5-10 Years</SelectItem>
-                      <SelectItem value="10+">10+ Years</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-                <div className="space-y-2">
-                  <Label htmlFor="previousFranchiseExperience">Previous Franchise Experience</Label>
-                  <Select value={previousFranchiseExperience} onValueChange={setPreviousFranchiseExperience}>
-                    <SelectTrigger>
-                      <SelectValue placeholder="Select experience" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="none">No Franchise Experience</SelectItem>
-                      <SelectItem value="food">Food & Beverage Franchise</SelectItem>
-                      <SelectItem value="retail">Retail Franchise</SelectItem>
-                      <SelectItem value="other">Other Franchise Experience</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
-              </div>
 
               <div className="border-b pb-4 mb-6 mt-8">
                 <h3 className="text-2xl font-bold mb-2">Additional Information</h3>
