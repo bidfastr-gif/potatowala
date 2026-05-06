@@ -18,21 +18,6 @@ export default defineConfig(({ mode }) => ({
     dedupe: ['react', 'react-dom'],
   },
   build: {
-    rollupOptions: {
-      output: {
-        manualChunks: {
-          // Vendor chunks
-          'react-vendor': ['react', 'react-dom', 'react-router-dom'],
-          'ui-vendor': ['@tanstack/react-query'],
-          // Component chunks
-          'ui-components': [
-            '@/components/ui/toaster',
-            '@/components/ui/sonner',
-            '@/components/ui/tooltip',
-          ],
-        },
-      },
-    },
-    chunkSizeWarningLimit: 600,
+    chunkSizeWarningLimit: 1200,
   },
 }));
