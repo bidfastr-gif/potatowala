@@ -6,16 +6,16 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Lazy load page components for code splitting
-const Index = lazy(() => import("./pages/Index"));
-const Menu = lazy(() => import("./pages/Menu"));
-const About = lazy(() => import("./pages/About"));
-const Blogs = lazy(() => import("./pages/Blogs"));
-const Contact = lazy(() => import("./pages/Contact"));
-const Franchise = lazy(() => import("./pages/Franchise"));
-const FranchiseEnquiry = lazy(() => import("./pages/FranchiseEnquiry"));
-const EventEnquiry = lazy(() => import("./pages/EventEnquiry"));
-const FrozenFood = lazy(() => import("./pages/FrozenFood"));
-const NotFound = lazy(() => import("./pages/NotFound"));
+const Index = lazy(() => import("./pages/Index.tsx"));
+const Menu = lazy(() => import("./pages/Menu.tsx"));
+const About = lazy(() => import("./pages/About.tsx"));
+const Blogs = lazy(() => import("./pages/Blogs.tsx"));
+const Contact = lazy(() => import("./pages/Contact.tsx"));
+const Franchise = lazy(() => import("./pages/Franchise.tsx"));
+const FranchiseEnquiry = lazy(() => import("./pages/FranchiseEnquiry.tsx"));
+const EventEnquiry = lazy(() => import("./pages/EventEnquiry.tsx"));
+const FrozenFood = lazy(() => import("./pages/FrozenFood.tsx"));
+const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
 const queryClient = new QueryClient();
 
