@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
 import logo from "@/assets/potatowala-logo.png";
-import pattern from "@/assets/food-pattern.jpg";
+
 import swiggyLogo from "@/assets/swiggy-logo.png";
 import zomatoLogo from "@/assets/zomato-logo.png";
 
@@ -17,14 +17,7 @@ export const Header = () => {
     <>
       {/* Main Header */}
       <header className="bg-primary text-primary-foreground border-b border-primary-foreground/10 sticky top-0 z-50 shadow-md relative overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-10">
-          <div className="absolute inset-0" style={{
-            backgroundImage: `url(${pattern})`,
-            backgroundSize: 'auto',
-            backgroundRepeat: 'repeat'
-          }} />
-        </div>
+
         <div className="container mx-auto px-4 py-2 relative z-10">
           <div className="flex items-center justify-between">
             {/* Logo */}

@@ -1,18 +1,11 @@
 import logo from "@/assets/potatowala-logo.png";
-import pattern from "@/assets/food-pattern.jpg";
+
 import { EmailSubscription } from "@/components/EmailSubscription";
 
 export const Footer = () => {
   return (
     <footer id="contact" className="bg-primary text-primary-foreground py-16 relative overflow-hidden">
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url(${pattern})`,
-          backgroundSize: 'auto',
-          backgroundRepeat: 'repeat'
-        }} />
-      </div>
+
       <div className="container mx-auto px-4 relative z-10">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-8">
           {/* Brand */}
