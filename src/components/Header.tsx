@@ -39,15 +39,15 @@ export const Header = () => {
             
             {/* Navigation */}
             <nav className="hidden md:flex items-center gap-8">
-              <a href="/" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium">Home</a>
-              <a href="/about" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium">About</a>
-              <a href="/frozen-food" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium">Frozen Food</a>
-              <a href="/menu" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium">Menu</a>
-              <a href="/franchise" className="text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium">Store Locator</a>
+              <a href="/" className="text-white hover:text-white/80 transition-colors font-bold text-lg">Home</a>
+              <a href="/about" className="text-white hover:text-white/80 transition-colors font-bold text-lg">About</a>
+              <a href="/frozen-food" className="text-white hover:text-white/80 transition-colors font-bold text-lg">Frozen Food</a>
+              <a href="/menu" className="text-white hover:text-white/80 transition-colors font-bold text-lg">Menu</a>
+              <a href="/franchise" className="text-white hover:text-white/80 transition-colors font-bold text-lg">Store Locator</a>
               
               {/* For Enquiry dropdown: Event / Franchise */}
               <DropdownMenu>
-                <DropdownMenuTrigger className="text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium outline-none">
+                <DropdownMenuTrigger className="text-white hover:text-white/80 transition-colors font-bold text-lg outline-none">
                   For Enquiry
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="bg-card border-border z-50 min-w-[220px]">
@@ -65,9 +65,9 @@ export const Header = () => {
               </DropdownMenu>
 
               <DropdownMenu>
-                <DropdownMenuTrigger className="flex items-center gap-1 text-primary-foreground hover:text-primary-foreground/80 transition-colors font-medium outline-none">
+                <DropdownMenuTrigger className="flex items-center gap-1 text-white hover:text-white/80 transition-colors font-bold text-lg outline-none">
                   More
-                  <ChevronDown className="w-4 h-4" />
+                  <ChevronDown className="w-5 h-5" />
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="bg-card border-border z-50 min-w-[220px]">
                   <DropdownMenuItem asChild>
