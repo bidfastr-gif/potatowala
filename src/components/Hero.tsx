@@ -6,8 +6,8 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import farmingPhase from "@/assets/potato-harvest-clear.png";
-import manufacturingPhase from "@/assets/frozen-products-collage.png";
+import farmingPhase from "@/assets/potato-harvest-clear.jpg";
+import manufacturingPhase from "@/assets/frozen-products-collage.jpg";
 import foodItemsCollage from "@/assets/food-items-collage.jpg";
 
 interface HeroSlide {

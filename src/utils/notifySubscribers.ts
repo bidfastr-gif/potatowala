@@ -15,6 +15,7 @@ export async function notifySubscribersAboutNewDish(dish: NewDish) {
   try {
     // Get all active subscribers
     const { data: subscribers, error: fetchError } = await supabase
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
       .from("email_subscriptions" as any)
       .select("email")
       .eq("is_active", true);
@@ -29,6 +30,7 @@ export async function notifySubscribersAboutNewDish(dish: NewDish) {
       return { success: true, count: 0 };
     }
 
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const subscriberEmails = subscribers.map((s: any) => s.email);
     console.log(`Notifying ${subscriberEmails.length} subscribers about new dish: ${dish.name}`);
 
@@ -102,6 +104,7 @@ export async function notifySubscribersAboutNewDish(dish: NewDish) {
           emailSent = true;
           console.log(`✓ Emails sent via Supabase Edge Function to ${emailData.emailsSent} subscribers`);
         }
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } catch (edgeError: any) {
         emailError = edgeError;
         console.error("✗ Supabase Edge Function error:", edgeError?.message || edgeError);

@@ -23,7 +23,8 @@ export const EmailSubscription = () => {
 
       // Check if email already exists
       const { data: existing } = await supabase
-        .from("email_subscriptions" as any)
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .from("email_subscriptions" as any)
         .select("email")
         .eq("email", validatedEmail)
         .single();
@@ -40,11 +41,13 @@ export const EmailSubscription = () => {
 
       // Insert email into subscriptions table
       const { error } = await supabase
-        .from("email_subscriptions" as any)
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      .from("email_subscriptions" as any)
         .insert([
           {
             email: validatedEmail,
             subscribed_at: new Date().toISOString(),
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           } as any,
         ]);
 

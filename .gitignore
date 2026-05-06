@@ -11,6 +11,11 @@ node_modules
 dist
 dist-ssr
 *.local
+.env
+
+# Image compression backups
+src/assets/_originals/
+compress_images.py
 
 # Editor directories and files
 .vscode/*

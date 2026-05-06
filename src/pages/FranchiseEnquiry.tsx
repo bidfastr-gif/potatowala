@@ -57,6 +57,7 @@ const FranchiseEnquiry = () => {
         // Cast the table name to `any` because the generated Supabase types
         // only know about the `feedback` table, while we are writing to a
         // custom `franchise_enquiries` table.
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         .from("franchise_enquiries" as any)
         .insert([
           {
@@ -67,6 +68,7 @@ const FranchiseEnquiry = () => {
             expected_opening_date: validatedData.expectedOpeningDate || null,
             current_occupation: validatedData.currentOccupation || null,
             message: validatedData.message,
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
           } as any,
         ])
         .select();
@@ -146,6 +148,7 @@ const FranchiseEnquiry = () => {
                 }
                 throw new Error(responseData.error || responseData.message || "Formspree request failed");
               }
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
             } catch (formspreeError: any) {
               emailError = formspreeError;
               console.error("✗✗✗ Formspree error:", formspreeError);
@@ -217,6 +220,7 @@ const FranchiseEnquiry = () => {
                 console.error("❌ Edge function not deployed! Deploy it with: npx supabase functions deploy send-franchise-email");
               }
             }
+            // eslint-disable-next-line @typescript-eslint/no-explicit-any
           } catch (edgeError: any) {
             emailError = edgeError;
             console.error("✗ Supabase Edge Function error:", edgeError?.message || edgeError);
@@ -254,12 +258,8 @@ const FranchiseEnquiry = () => {
               formData.append("email", validatedData.email);
               formData.append("phone", validatedData.phone);
               formData.append("location", validatedData.location);
-              formData.append("investment", validatedData.investment || "Not specified");
-              formData.append("franchiseType", validatedData.franchiseType || "Not specified");
-              formData.append("businessExperience", validatedData.businessExperience || "Not specified");
               formData.append("expectedOpeningDate", validatedData.expectedOpeningDate || "Not specified");
               formData.append("currentOccupation", validatedData.currentOccupation || "Not specified");
-              formData.append("previousFranchiseExperience", validatedData.previousFranchiseExperience || "Not specified");
               formData.append("message", validatedData.message);
               formData.append("_subject", `New Franchise Enquiry from ${validatedData.name}`);
               // Note: Formspree uses the email configured in form settings, not _to
@@ -291,6 +291,7 @@ const FranchiseEnquiry = () => {
                 }
                 throw new Error(responseData.error || responseData.message || "Formspree request failed");
               }
+              // eslint-disable-next-line @typescript-eslint/no-explicit-any
             } catch (formspreeError: any) {
               emailError = formspreeError;
               console.error("✗✗✗ Formspree error:", formspreeError);

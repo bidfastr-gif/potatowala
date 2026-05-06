@@ -1,5 +1,7 @@
+// @ts-ignore: Deno runtime import
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts"
 
+// @ts-ignore: Deno global
 const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY") || "";
 const TO_EMAIL = "vasanthb.gap@gmail.com";
 
@@ -15,8 +17,8 @@ interface FranchiseEnquiry {
 // Function to generate PDF using pdf-lib
 async function generatePDF(enquiry: FranchiseEnquiry): Promise<string> {
   try {
-    // Import pdf-lib from CDN (Deno-compatible)
     const { PDFDocument, rgb, StandardFonts } = await import(
+      // @ts-ignore: Deno/CDN import
       "https://cdn.skypack.dev/pdf-lib@^1.17.1"
     );
 
@@ -217,7 +219,7 @@ async function generatePDF(enquiry: FranchiseEnquiry): Promise<string> {
   }
 }
 
-serve(async (req) => {
+serve(async (req: Request) => {
   // Handle CORS
   if (req.method === "OPTIONS") {
     return new Response("ok", {
@@ -320,6 +322,7 @@ ${enquiry.message}
     const pdfFilename = `franchise-enquiry-${timestamp}.pdf`;
 
     // Prepare email with PDF attachment
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const emailPayload: any = {
       from: "Potatowala <onboarding@resend.dev>", // Update with your verified domain
       to: [TO_EMAIL],
@@ -396,7 +399,7 @@ ${enquiry.message}
     return new Response(
       JSON.stringify({ 
         success: false, 
-        error: error.message || "Failed to send email" 
+        error: (error as Error).message || "Failed to send email" 
       }),
       {
         status: 500,

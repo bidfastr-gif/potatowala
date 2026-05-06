@@ -34,7 +34,9 @@ export const Testimonials = () => {
         }
         
         console.log("Fetched testimonials:", data);
-        setTestimonials(data || []);
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        const testimonialsList = (data || []) as any[];
+        setTestimonials(testimonialsList);
       } catch (error) {
         console.error("Error fetching testimonials:", error);
       } finally {
@@ -56,6 +58,7 @@ export const Testimonials = () => {
         },
         (payload) => {
           console.log("Real-time feedback event:", payload);
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           const newRow = payload.new as any;
           // Only refetch if the inserted feedback is approved AND rating >= 4
           if (newRow?.is_approved === true && newRow?.rating >= 4) {

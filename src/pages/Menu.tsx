@@ -2,8 +2,8 @@ import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { PageHero } from "@/components/PageHero";
 import pattern from "@/assets/food-pattern.jpg";
-import menuPage1 from "@/assets/menu-page-1.png";
-import menuPage2 from "@/assets/menu-page-2.png";
+import menuPage1 from "@/assets/menu-page-1.jpg";
+import menuPage2 from "@/assets/menu-page-2.jpg";
 
 const Menu = () => {
   return (
