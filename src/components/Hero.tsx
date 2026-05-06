@@ -109,7 +109,7 @@ export const Hero = () => {
               <DropdownMenu>
                 <DropdownMenuTrigger asChild>
                   <button className="inline-flex items-center px-5 py-3 rounded-full bg-primary text-primary-foreground font-semibold shadow-lg text-sm md:text-base hover:bg-primary/90 transition-colors">
-                    For Enquiry
+                    For Enquiries
                   </button>
                 </DropdownMenuTrigger>
                 <DropdownMenuContent className="bg-card border-border z-50 min-w-[220px]">
@@ -142,8 +142,8 @@ export const Hero = () => {
             key={slide.title}
             onClick={() => goToSlide(index)}
             className={`h-2 rounded-full transition-all duration-300 ${index === currentIndex
-                ? "bg-white w-6"
-                : "bg-white/40 w-2 hover:bg-white/70"
+              ? "bg-white w-6"
+              : "bg-white/40 w-2 hover:bg-white/70"
               }`}
             aria-label={`Go to slide ${index + 1}`}
           />
