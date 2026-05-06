@@ -210,7 +210,7 @@ async function generatePDF(enquiry: FranchiseEnquiry): Promise<string> {
     const pdfBytes = await pdfDoc.save();
 
     // Convert to base64
-    const base64String = btoa(String.fromCharCode(...new Uint8Array(pdfBytes)));
+    const base64String = btoa(String.fromCharCode.apply(null, Array.from(new Uint8Array(pdfBytes))));
     return base64String;
   } catch (error) {
     console.error("Error generating PDF:", error);
