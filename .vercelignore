@@ -1,9 +1,0 @@
-node_modules
-dist
-.env
-supabase
-compress_images.py
-check_case.py
-fix_lint.py
-fix_lint_precise.py
-.tempmediaStorage
