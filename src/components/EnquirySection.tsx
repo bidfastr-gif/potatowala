@@ -59,7 +59,7 @@ export const EnquirySection = () => {
                                 </p>
 
                                 <Link to={card.link}>
-                                    <button className="flex items-center gap-2 px-6 py-2.5 rounded-full font-bold transition-all duration-300 hover:gap-4 bg-pink-600 text-white hover:bg-pink-700 hover:scale-105 active:scale-95 shadow-lg">
+                                    <button className="flex items-center gap-2 px-6 py-2.5 rounded-full font-bold transition-all duration-300 hover:gap-4 bg-[#FFE8A3] text-gray-900 hover:bg-[#FFD36B] hover:scale-105 active:scale-95 shadow-lg">
                                         Enquire Now
                                         <ArrowRight className="w-4 h-4" />
                                     </button>
