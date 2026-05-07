@@ -5,6 +5,7 @@ import { Categories } from "@/components/Categories";
 import { AboutSection } from "@/components/AboutSection";
 import { StatisticsBanner } from "@/components/StatisticsBanner";
 import { WhyChooseUs } from "@/components/WhyChooseUs";
+import { OurPhilosophy } from "@/components/OurPhilosophy";
 import { Footer } from "@/components/Footer";
 import pattern from "@/assets/food-pattern.jpg";
 
@@ -29,6 +30,7 @@ const Index = () => {
           <EnquirySection />
           <Categories />
           <AboutSection />
+          <OurPhilosophy />
           <StatisticsBanner />
           <WhyChooseUs />
         </div>

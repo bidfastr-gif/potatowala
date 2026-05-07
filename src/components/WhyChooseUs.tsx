@@ -41,10 +41,16 @@ export const WhyChooseUs = () => {
   return (
     <section id="about" className="py-24 bg-cream">
       <div className="container mx-auto px-4">
-        <div className="text-center mb-16">
+        <div className="text-center mb-16 max-w-3xl mx-auto">
+          <span className="text-primary uppercase tracking-widest font-bold text-sm mb-2 block">
+            The Potatowala Difference
+          </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-            Why Choose Potatowala?
+            Why Choose Us?
           </h2>
+          <p className="text-muted-foreground text-lg leading-relaxed">
+            What makes us stand out in a world of fast food? It's our obsession with the details. From the way we select our crops to the speed of our service, we're dedicated to perfection.
+          </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">

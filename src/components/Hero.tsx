@@ -6,7 +6,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import farmingPhase from "@/assets/potato-harvest-clear.jpg";
+import farmingPhase from "@/assets/indian_potato_farming.png";
 import manufacturingPhase from "@/assets/frozen-products-collage.jpg";
 import foodItemsCollage from "@/assets/food-items-collage.jpg";
 
@@ -20,21 +20,21 @@ interface HeroSlide {
 const slides: HeroSlide[] = [
   {
     title: "From the Roots of Quality",
-    subtitle: "1st Phase: Potato Farming",
+    subtitle: "Direct Sourcing",
     description:
-      "We start at the source, ensuring only the finest potatoes are grown with care in our dedicated farms for the perfect crunch.",
+      "We start at the source, procuring only the finest potatoes directly from farmers without any intermediaries for the perfect crunch.",
     image: farmingPhase,
   },
   {
-    title: "State-of-the-Art Processing",
-    subtitle: "2nd Phase: Frozen Foods Manufacturing By Own",
+    title: "The Evolution of Excellence- From Field to Freezer",
+    subtitle: "Frozen Foods Manufacturing By Own",
     description:
       "Our potatoes are processed in our own advanced facilities, maintaining the highest hygiene and quality standards for our frozen range.",
     image: manufacturingPhase,
   },
   {
     title: "Served Fresh & Hot",
-    subtitle: "3rd Phase: Food Items in Potatowala",
+    subtitle: "Food Items in Potatowala",
     description:
       "Experience the final transformation of our premium potatoes into delicious, loaded snacks served fresh at our outlets.",
     image: foodItemsCollage,

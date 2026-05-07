@@ -5,7 +5,7 @@ import pattern from "@/assets/food-pattern.jpg";
 
 export const AboutSection = () => {
   return (
-    <section id="about" className="py-24 bg-background relative overflow-hidden">
+    <section id="about" className="pt-24 pb-0 bg-background relative overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-[0.08]">
         <div
@@ -22,21 +22,21 @@ export const AboutSection = () => {
           {/* Section 1 - Text left, Image right (like 'Our Mission') */}
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div className="space-y-6 md:pr-8 max-w-xl">
+              <span className="text-primary uppercase tracking-widest font-bold text-sm">
+                The Story Behind the Crunch
+              </span>
               <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 Welcome to Potatowala
               </h2>
 
               <p className="text-muted-foreground text-lg leading-relaxed">
-                Potatowala is a premium fast-food brand specializing in delicious loaded fries, spring potatoes, and
-                innovative potato-based dishes. With over 4+ years of experience, we have been serving happiness on a
-                plate to thousands of satisfied customers across Chennai and beyond.
+                Potatowala isn't just a business; it's a passion project born from a simple love for the humblest of vegetables—the potato. Over the last 4+ years, we've transformed this kitchen staple into a gourmet experience for thousands of food lovers across Chennai.
               </p>
               <p className="text-muted-foreground text-lg leading-relaxed">
-                Our journey began with a simple mission: to elevate potatoes into irresistibly crispy, delicious creations that bring joy to every bite. We use only the finest ingredients, premium potatoes, and our secret blend of seasonings to deliver an unforgettable culinary experience.
-                </p>
+                Our journey started in a small kitchen with a big mission: to prove that fries could be so much more than just a side dish. By sourcing only the finest crops and experimenting with bold, international flavors, we've created a menu that truly celebrates the "Roots of Quality."
+              </p>
               <p className="text-muted-foreground text-lg leading-relaxed">
-                Today, Potatowala stands for comfort food with a twist – from late‑night cravings to family outings,
-                our outlets are designed to be warm, vibrant spaces where every visit feels like a small celebration.
+                Whether you're stopping by for a quick late-night snack or bringing the whole family for a treat, our outlets are designed to be warm, vibrant spaces where every visit feels like a small celebration.
               </p>
             </div>
 

@@ -1,4 +1,42 @@
+import { useState, useEffect, useRef } from "react";
+import { useInView } from "framer-motion";
 import pattern from "@/assets/food-pattern.jpg";
+
+const CountUpNumber = ({ end, suffix }: { end: number; suffix: string }) => {
+  const [count, setCount] = useState(0);
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+
+  useEffect(() => {
+    if (isInView) {
+      const duration = 2000;
+      const frameDuration = 1000 / 60;
+      const totalFrames = Math.round(duration / frameDuration);
+      
+      let frame = 0;
+      const timer = setInterval(() => {
+        frame++;
+        const progress = frame / totalFrames;
+        const currentCount = Math.round(end * (1 - Math.pow(1 - progress, 3)));
+        setCount(currentCount);
+
+        if (frame >= totalFrames) {
+          clearInterval(timer);
+          setCount(end);
+        }
+      }, frameDuration);
+
+      return () => clearInterval(timer);
+    }
+  }, [isInView, end]);
+
+  return (
+    <span ref={ref}>
+      {count.toLocaleString()}
+      {suffix}
+    </span>
+  );
+};
 
 export const StatisticsBanner = () => {
   const statistics = [
@@ -9,7 +47,8 @@ export const StatisticsBanner = () => {
           <path strokeLinecap="round" strokeLinejoin="round" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
         </svg>
       ),
-      number: "6,834+",
+      number: 6834,
+      suffix: "+",
       text: "Happy Customers",
     },
     {
@@ -18,7 +57,8 @@ export const StatisticsBanner = () => {
           <path strokeLinecap="round" strokeLinejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
       ),
-      number: "4+",
+      number: 4,
+      suffix: "+",
       text: "Years Of Experience",
     },
     {
@@ -27,7 +67,8 @@ export const StatisticsBanner = () => {
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
         </svg>
       ),
-      number: "8,534+",
+      number: 8534,
+      suffix: "+",
       text: "Favorite Dishes",
     },
     {
@@ -36,7 +77,8 @@ export const StatisticsBanner = () => {
           <path strokeLinecap="round" strokeLinejoin="round" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
         </svg>
       ),
-      number: "7,853+",
+      number: 7853,
+      suffix: "+",
       text: "Customer Rating",
     },
   ];
@@ -71,7 +113,7 @@ export const StatisticsBanner = () => {
 
                 {/* Number */}
                 <h3 className="text-4xl md:text-5xl font-bold mb-3">
-                  {stat.number}
+                  <CountUpNumber end={stat.number} suffix={stat.suffix} />
                 </h3>
 
                 {/* Text */}

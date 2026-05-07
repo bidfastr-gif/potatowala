@@ -38,7 +38,18 @@ export const EnquirySection = () => {
                     }}
                 />
             </div>
-            <div className="container mx-auto px-4">
+            <div className="container mx-auto px-4 relative z-10">
+                <div className="text-center mb-16 max-w-3xl mx-auto">
+                    <span className="text-primary uppercase tracking-widest font-bold text-sm mb-2 block">
+                        Get in Touch
+                    </span>
+                    <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+                        Partner with Potatowala
+                    </h2>
+                    <p className="text-muted-foreground text-lg leading-relaxed font-medium">
+                        Whether you're looking to start your own business or planning an unforgettable event, we're here to help you bring the magic of our premium fries to your community.
+                    </p>
+                </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                     {cards.map((card, index) => (
                         <motion.div
@@ -49,6 +60,17 @@ export const EnquirySection = () => {
                             transition={{ delay: index * 0.2, duration: 0.5 }}
                             className="relative overflow-hidden group p-6 rounded-2xl border border-primary bg-primary text-primary-foreground hover:shadow-2xl transition-all duration-500"
                         >
+                            {/* Background Pattern Inside Card */}
+                            <div className="absolute inset-0 opacity-[0.1] pointer-events-none mix-blend-overlay">
+                                <div
+                                    className="absolute inset-0"
+                                    style={{
+                                        backgroundImage: `url(${pattern})`,
+                                        backgroundSize: "200px",
+                                        backgroundRepeat: "repeat",
+                                    }}
+                                />
+                            </div>
                             <div className="relative z-10 flex flex-col h-full items-center text-center">
                                 <h3 className="text-2xl font-bold mb-3 text-white">
                                     {card.title}
