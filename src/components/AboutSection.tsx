@@ -109,9 +109,6 @@ export const AboutSection = () => {
                   <strong className="text-foreground">Dine-In & Delivery:</strong> Enjoy Potatowala at our outlets or order online via leading delivery partners for the same hot, crispy taste at home.
                 </p>
                 <p className="text-muted-foreground text-lg leading-relaxed">
-                  <strong className="text-foreground">Freshly Made, Every Time:</strong> We avoid pre-cooked or frozen fries for our outlets – every batch is fried to order so you always get that hot, crunchy first bite.
-                </p>
-                <p className="text-muted-foreground text-lg leading-relaxed">
                   <strong className="text-foreground">Made for Sharing:</strong> Generous portions and customisable toppings make our dishes perfect for friends, families, and office teams to share and enjoy together.
                 </p>
               </div>

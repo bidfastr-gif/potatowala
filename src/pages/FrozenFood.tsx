@@ -18,7 +18,6 @@ import paneerPoppersImg from "@/assets/paneer-poppers-frozen.JPG";
 import cheeseCornStripsImg from "@/assets/cheese-corn-strips-frozen.JPG";
 import cheeseBalls from "@/assets/cheese-balls.jpg";
 import chickenPatty from "@/assets/chicken-patty.jpg";
-import chocoSpring from "@/assets/choco-spring.jpg";
 
 interface FrozenItem {
   name: string;
@@ -171,17 +170,6 @@ const frozenItems: FrozenItem[] = [
       "Perfect for grilling, pan‑frying or tandoor",
     ],
     image: chickenKebabSeekhImg,
-  },
-  {
-    name: "Choco Spring",
-    packInfo: "1 Packet | 4 flavours | 24 nos",
-    bullets: [
-      "Innovative fusion snack of crispy potato & chocolate",
-      "Four exciting chocolate flavours in one pack",
-      "Fun spiral shape with great visual appeal",
-      "Crunchy, creamy and absolutely addictive",
-    ],
-    image: chocoSpring,
   },
 ];
 
