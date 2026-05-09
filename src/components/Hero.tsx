@@ -20,16 +20,16 @@ interface HeroSlide {
 const slides: HeroSlide[] = [
   {
     title: "From the Roots of Quality",
-    subtitle: "Direct Sourcing",
+    subtitle: "Sourcing",
     description:
-      "We start at the source, procuring only the finest potatoes directly from farmers without any intermediaries for the perfect crunch.",
+      "Honest sourcing from local farmers. We start at the root to ensure every bite is traceable and premium.",
     image: farmingPhase,
   },
   {
     title: "The Evolution of Excellence- From Field to Freezer",
-    subtitle: "Frozen Foods Manufacturing By Own",
+    subtitle: "Manufacturing",
     description:
-      "Our potatoes are processed in our own advanced facilities, maintaining the highest hygiene and quality standards for our frozen range.",
+      "Focus on the Science of Freshness. Explain how you transform raw potatoes into frozen form without losing the 'Hand Made' soul.",
     image: manufacturingPhase,
   },
   {
