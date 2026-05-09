@@ -24,23 +24,6 @@ const Menu = () => {
           />
         </div>
         <div className="relative z-10">
-          {/* Intro section */}
-          <section className="max-w-4xl mx-auto text-center mb-16 px-4">
-            <h2 className="text-3xl md:text-5xl font-bold mb-6 text-foreground uppercase tracking-tight">
-              Science-backed. Tech-preserved. <span className="text-primary">Creatively native.</span>
-            </h2>
-            <div className="space-y-4 text-muted-foreground text-lg md:text-xl">
-              <p>
-                We engineer our menu from the ground up to ensure peak hygiene and health.
-              </p>
-              <p>
-                By infusing traditional roots with modern creativity, we redefine fresh.
-              </p>
-              <p className="text-foreground font-bold italic mt-4">
-                Taste the future of our nation’s flavors.
-              </p>
-            </div>
-          </section>
 
           {/* Visual Menu Display */}
           <section className="max-w-[90%] mx-auto space-y-12">

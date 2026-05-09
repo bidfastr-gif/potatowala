@@ -34,9 +34,9 @@ const slides: HeroSlide[] = [
   },
   {
     title: "Served Fresh & Hot",
-    subtitle: "Food Items in Potatowala",
+    subtitle: "Taste the future of our nation’s flavors.",
     description:
-      "Experience the final transformation of our premium potatoes into delicious, loaded snacks served fresh at our outlets.",
+      "Science-backed. Tech-preserved. Creatively native. We engineer our menu from the ground up to ensure peak hygiene and health. By infusing traditional roots with modern creativity, we redefine fresh.",
     image: foodItemsCollage,
   },
 ];
