@@ -80,7 +80,7 @@ export const Hero = () => {
             alt={currentSlide.title}
             className="w-full h-full object-cover"
             loading="eager"
-            fetchpriority="high"
+            fetchPriority="high"
             decoding="sync"
             width={1920}
             height={1080}
