@@ -2,6 +2,8 @@ import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react-swc";
 import path from "path";
 import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
+import compression from 'vite-plugin-compression';
+import purgecss from 'vite-plugin-purgecss';
 
 
 // https://vitejs.dev/config/
@@ -15,49 +17,29 @@ export default defineConfig(({ mode }) => ({
     react(),
     ViteImageOptimizer({
       test: /\.(jpe?g|png|gif|tiff|webp|svg|avif)$/i,
-      exclude: undefined,
-      include: undefined,
       includePublic: true,
       logStats: true,
-      ansiColors: true,
-      svg: {
-        multipass: true,
-        plugins: [
-          {
-            name: 'preset-default',
-            params: {
-              overrides: {
-                cleanupIds: false,
-                removeViewBox: false,
-              },
-            },
-          },
-          'sortAttrs',
-          {
-            name: 'addAttributesToSVGElement',
-            params: {
-              attributes: [{ xmlns: 'http://www.w3.org/2000/svg' }],
-            },
-          },
-        ],
-      },
-      png: {
-        quality: 80,
-      },
-      jpeg: {
-        quality: 75,
-      },
-      jpg: {
-        quality: 75,
-      },
-      webp: {
-        lossless: false,
-        quality: 75,
-      },
-      avif: {
-        lossless: false,
-        quality: 60,
-      },
+      png: { quality: 70 },
+      jpeg: { quality: 70 },
+      jpg: { quality: 70 },
+      webp: { quality: 70 },
+      avif: { quality: 50 },
+    }),
+    compression({
+      algorithm: 'brotliCompress',
+      ext: '.br',
+    }),
+    compression({
+      algorithm: 'gzip',
+      ext: '.gz',
+    }),
+    purgecss({
+      content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
+      defaultExtractor: content => content.match(/[\w-/:]+(?<!:)/g) || [],
+      safelist: {
+        standard: [/^ant-/, /^dark/],
+        deep: [/data-state/],
+      }
     }),
   ].filter(Boolean),
   resolve: {
