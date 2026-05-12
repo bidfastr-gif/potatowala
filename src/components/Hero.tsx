@@ -81,6 +81,9 @@ export const Hero = () => {
               src={slide.image}
               alt={slide.title}
               className="w-full h-full object-cover"
+              loading={index === 0 ? "eager" : "lazy"}
+              {...(index === 0 ? { fetchpriority: "high" } : {})}
+              decoding={index === 0 ? "sync" : "async"}
             />
           </div>
         ))}
