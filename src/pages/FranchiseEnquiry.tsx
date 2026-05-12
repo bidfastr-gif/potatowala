@@ -95,67 +95,48 @@ const FranchiseEnquiry = () => {
       const prioritizeFormspree = formspreeConfigured && !emailjsConfigured;
 
       try {
-        // Method 1: Try Formspree FIRST if it's prioritized (only one configured)
-        if (prioritizeFormspree && !emailSent) {
-          let formspreeId = import.meta.env.VITE_FORMSPREE_ID;
-          if (formspreeId) {
-            // Extract Form ID from URL if full URL is provided
-            if (formspreeId.includes("formspree.io/f/")) {
-              const match = formspreeId.match(/formspree\.io\/f\/([a-zA-Z0-9]+)/);
-              if (match) {
-                formspreeId = match[1];
-                console.log("✓ Extracted Formspree ID from URL:", formspreeId);
-              } else {
-                console.error("❌ Could not extract Formspree ID from URL:", formspreeId);
-              }
+        // Method 1: Try Formspree FIRST
+        let formspreeId = import.meta.env.VITE_FORMSPREE_ID || "xqenwdjy";
+        if (formspreeId) {
+          // Extract Form ID from URL if full URL is provided
+          if (formspreeId.includes("formspree.io/f/")) {
+            const match = formspreeId.match(/formspree\.io\/f\/([a-zA-Z0-9]+)/);
+            if (match) {
+              formspreeId = match[1];
+              console.log("✓ Extracted Formspree ID from URL:", formspreeId);
             }
+          }
+          
+          try {
+            const formData = new FormData();
+            formData.append("name", validatedData.name);
+            formData.append("email", validatedData.email);
+            formData.append("phone", validatedData.phone);
+            formData.append("location", validatedData.location);
+            formData.append("expectedOpeningDate", validatedData.expectedOpeningDate || "Not specified");
+            formData.append("currentOccupation", validatedData.currentOccupation || "Not specified");
+            formData.append("message", validatedData.message);
+            formData.append("_subject", `New Franchise Enquiry from ${validatedData.name}`);
+
+            console.log("📧 Attempting to send via Formspree...");
             
-            try {
-              const formData = new FormData();
-              formData.append("name", validatedData.name);
-              formData.append("email", validatedData.email);
-              formData.append("phone", validatedData.phone);
-              formData.append("location", validatedData.location);
-              formData.append("expectedOpeningDate", validatedData.expectedOpeningDate || "Not specified");
-              formData.append("currentOccupation", validatedData.currentOccupation || "Not specified");
-              formData.append("message", validatedData.message);
-              formData.append("_subject", `New Franchise Enquiry from ${validatedData.name}`);
+            const response = await fetch(`https://formspree.io/f/${formspreeId}`, {
+              method: "POST",
+              body: formData,
+              headers: {
+                "Accept": "application/json"
+              }
+            });
 
-              console.log("📧 Attempting to send via Formspree (PRIORITY)...");
-              console.log("   Form ID:", formspreeId);
-              console.log("   URL: https://formspree.io/f/" + formspreeId);
-              
-              const response = await fetch(`https://formspree.io/f/${formspreeId}`, {
-                method: "POST",
-                body: formData,
-                headers: {
-                  "Accept": "application/json"
-                }
-              });
-
+            if (response.ok) {
+              emailSent = true;
+              console.log("✓ Email sent via Formspree");
+            } else {
               const responseData = await response.json();
-              console.log("   Response status:", response.status);
-              console.log("   Response data:", responseData);
-
-              if (response.ok) {
-                emailSent = true;
-                console.log("✓✓✓ Email sent via Formspree to vasanthb.gap@gmail.com ✓✓✓");
-                console.log("   Formspree submission ID:", responseData.next || responseData.id);
-              } else {
-                console.error("❌ Formspree error response:", responseData);
-                if (responseData.errors) {
-                  console.error("   Errors:", responseData.errors);
-                }
-                throw new Error(responseData.error || responseData.message || "Formspree request failed");
-              }
-              // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            } catch (formspreeError: any) {
-              emailError = formspreeError;
-              console.error("✗✗✗ Formspree error:", formspreeError);
-              if (formspreeError.message) {
-                console.error("   Error message:", formspreeError.message);
-              }
+              console.error("❌ Formspree error:", responseData);
             }
+          } catch (formspreeError) {
+            console.error("✗ Formspree error:", formspreeError);
           }
         }
 

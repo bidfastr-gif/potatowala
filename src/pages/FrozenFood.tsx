@@ -206,29 +206,51 @@ const FrozenFood = () => {
         </section>
 
         {/* Product cards based on your frozen product catalogue */}
-        <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+        <section className="grid grid-cols-1 xl:grid-cols-3 gap-4 max-w-[1400px] mx-auto px-2">
           {frozenItems.map((item) => (
             <article
               key={item.name}
-              className="rounded-3xl shadow-sm border-2 border-primary overflow-hidden flex flex-col hover:shadow-lg transition-shadow bg-gradient-to-b from-black to-white"
+              className="group rounded-2xl border border-primary/20 bg-white overflow-hidden flex flex-row h-[180px] hover:border-primary hover:shadow-xl transition-all duration-300"
             >
-              <div className="aspect-[4/5] w-full overflow-hidden bg-muted">
+              {/* Compact Image Section */}
+              <div className="w-1/3 min-w-[120px] overflow-hidden bg-muted relative">
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="w-full h-full object-cover transform hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
                 />
+                <div className="absolute top-2 left-2 bg-primary text-white text-[8px] font-bold px-2 py-0.5 rounded-full shadow-sm">
+                  FROZEN
+                </div>
               </div>
-              <div className="px-6 py-6 flex-1 flex flex-col text-left bg-white">
-                <h3 className="text-lg md:text-xl font-semibold mb-1">{item.name}</h3>
-                <p className="text-xs md:text-sm font-semibold text-primary mb-3 uppercase tracking-wide">
-                  {item.packInfo}
-                </p>
-                <ul className="text-xs md:text-sm text-muted-foreground space-y-1 leading-relaxed flex-1">
-                  {item.bullets.map((point) => (
-                    <li key={point}>• {point}</li>
+
+              {/* Compact Content Section */}
+              <div className="flex-1 p-3 flex flex-col justify-between overflow-hidden">
+                <div>
+                  <h3 className="text-sm md:text-base font-bold text-foreground mb-1 line-clamp-1 group-hover:text-primary transition-colors">
+                    {item.name}
+                  </h3>
+                  <div className="inline-flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-primary/10 text-primary text-[10px] font-bold uppercase">
+                    <span className="w-1.5 h-1.5 rounded-full bg-primary animate-pulse" />
+                    {item.packInfo}
+                  </div>
+                </div>
+                
+                <div className="space-y-1 mt-2">
+                  {item.bullets.slice(0, 3).map((point) => (
+                    <div key={point} className="flex items-start gap-2">
+                      <div className="mt-1 w-1 h-1 rounded-full bg-primary flex-shrink-0" />
+                      <p className="text-[10px] text-muted-foreground leading-tight line-clamp-1">
+                        {point}
+                      </p>
+                    </div>
                   ))}
-                </ul>
+                  {item.bullets.length > 3 && (
+                    <p className="text-[9px] text-primary font-semibold ml-3 italic">
+                      + more features
+                    </p>
+                  )}
+                </div>
               </div>
             </article>
           ))}

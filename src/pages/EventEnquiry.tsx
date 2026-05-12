@@ -59,38 +59,10 @@ const EventEnquiry = () => {
         import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
       const formspreeConfigured = import.meta.env.VITE_FORMSPREE_ID;
 
-      // Try EmailJS first if configured
-      if (emailjsConfigured) {
+      // Method 1: Try Formspree FIRST
+      let formspreeId = (import.meta.env.VITE_FORMSPREE_ID as string) || "xqenwdjy";
+      if (formspreeId) {
         try {
-          const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
-          const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
-          const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
-
-          emailjs.init(publicKey);
-          const emailParams = {
-            to_email: "vasanthb.gap@gmail.com",
-            from_name: validatedData.name,
-            from_email: validatedData.email,
-            phone: validatedData.phone,
-            eventType: validatedData.eventType,
-            date: validatedData.date,
-            location: validatedData.location,
-            guests: validatedData.guests || "Not specified",
-            message: validatedData.message,
-            subject: `New Event Enquiry from ${validatedData.name}`,
-          };
-
-          await emailjs.send(serviceId, templateId, emailParams);
-          emailSent = true;
-        } catch (error) {
-          console.error("Event enquiry EmailJS error:", error);
-        }
-      }
-
-      // Fallback to Formspree if configured and EmailJS failed / not configured
-      if (!emailSent && formspreeConfigured) {
-        try {
-          let formspreeId = import.meta.env.VITE_FORMSPREE_ID as string;
           if (formspreeId.includes("formspree.io/f/")) {
             const match = formspreeId.match(/formspree\.io\/f\/([a-zA-Z0-9]+)/);
             if (match) {
@@ -119,11 +91,41 @@ const EventEnquiry = () => {
 
           if (response.ok) {
             emailSent = true;
+            console.log("✓ Email sent via Formspree");
           } else {
             console.error("Formspree error:", await response.json());
           }
         } catch (error) {
           console.error("Event enquiry Formspree error:", error);
+        }
+      }
+
+      // Method 2: Fallback to EmailJS
+      if (!emailSent && emailjsConfigured) {
+        try {
+          const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID as string;
+          const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID as string;
+          const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY as string;
+
+          emailjs.init(publicKey);
+          const emailParams = {
+            to_email: "vasanthb.gap@gmail.com",
+            from_name: validatedData.name,
+            from_email: validatedData.email,
+            phone: validatedData.phone,
+            eventType: validatedData.eventType,
+            date: validatedData.date,
+            location: validatedData.location,
+            guests: validatedData.guests || "Not specified",
+            message: validatedData.message,
+            subject: `New Event Enquiry from ${validatedData.name}`,
+          };
+
+          await emailjs.send(serviceId, templateId, emailParams);
+          emailSent = true;
+          console.log("✓ Email sent via EmailJS");
+        } catch (error) {
+          console.error("Event enquiry EmailJS error:", error);
         }
       }
 
