@@ -218,6 +218,10 @@ const FrozenFood = () => {
                   src={item.image}
                   alt={item.name}
                   className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  width={400}
+                  height={400}
+                  loading="lazy"
+                  decoding="async"
                 />
                 <div className="absolute top-2 left-2 bg-primary text-white text-[8px] font-bold px-2 py-0.5 rounded-full shadow-sm">
                   FROZEN

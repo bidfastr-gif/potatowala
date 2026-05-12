@@ -84,6 +84,8 @@ export const Hero = () => {
               loading={index === 0 ? "eager" : "lazy"}
               {...(index === 0 ? { fetchpriority: "high" } : {})}
               decoding={index === 0 ? "sync" : "async"}
+              width={1920}
+              height={1080}
             />
           </div>
         ))}
