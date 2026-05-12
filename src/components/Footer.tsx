@@ -1,6 +1,8 @@
-import logo from "@/assets/potatowala-logo.png";
-import pattern from "@/assets/food-pattern.jpg";
-import { EmailSubscription } from "@/components/EmailSubscription";
+import { lazy, Suspense } from "react";
+import logo from "@/assets/potatowala-logo.webp";
+import pattern from "@/assets/food-pattern.webp";
+
+const EmailSubscription = lazy(() => import("@/components/EmailSubscription").then(module => ({ default: module.EmailSubscription })));
 
 export const Footer = () => {
   return (
@@ -22,6 +24,9 @@ export const Footer = () => {
               alt="Potatowala Logo - Premium Loaded Fries" 
               className="h-24 w-auto object-contain"
               style={{ imageRendering: 'crisp-edges' }}
+              width={200}
+              height={100}
+              loading="lazy"
             />
             <p className="text-sm opacity-80 mb-4">
               From tasty bites to cool sips, all in one plate. Experience the best fries in town.
@@ -51,7 +56,9 @@ export const Footer = () => {
 
           {/* Email Subscription */}
           <div>
-            <EmailSubscription />
+            <Suspense fallback={<div className="h-24 animate-pulse bg-white/10 rounded-lg" />}>
+              <EmailSubscription />
+            </Suspense>
           </div>
         </div>
 

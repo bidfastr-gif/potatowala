@@ -1,4 +1,4 @@
-import pattern from "@/assets/food-pattern.jpg";
+import pattern from "@/assets/food-pattern.webp";
 
 export const OurPhilosophy = () => {
   return (

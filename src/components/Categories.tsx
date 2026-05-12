@@ -1,12 +1,12 @@
-import pattern from "@/assets/food-pattern.jpg";
+import pattern from "@/assets/food-pattern.webp";
 import { Info } from "lucide-react";
 // Using actual/placeholder images for products
-import nachos from "@/assets/nachos.jpg";
-import loadedFries from "@/assets/loaded-fries.jpg";
-import springPotatoImage from "@/assets/spring-potato.jpg";
-import mojitoImage from "@/assets/mojito-new.jpg";
-import combo from "@/assets/combo.jpg";
-import longfriesImage from "@/assets/long-fries.jpg";
+import nachos from "@/assets/nachos.webp";
+import loadedFries from "@/assets/loaded-fries.webp";
+import springPotatoImage from "@/assets/spring-potato.webp";
+import mojitoImage from "@/assets/mojito-new.webp";
+import combo from "@/assets/combo.webp";
+import longfriesImage from "@/assets/long-fries.webp";
 
 export const Categories = () => {
   const categories = [
@@ -78,6 +78,10 @@ export const Categories = () => {
                   src={category.image}
                   alt={category.name}
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  width={400}
+                  height={300}
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
 

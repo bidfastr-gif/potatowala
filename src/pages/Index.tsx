@@ -1,13 +1,22 @@
+import { lazy, Suspense } from "react";
 import { Header } from "@/components/Header";
 import { Hero } from "@/components/Hero";
 import { EnquirySection } from "@/components/EnquirySection";
 import { Categories } from "@/components/Categories";
-import { AboutSection } from "@/components/AboutSection";
-import { StatisticsBanner } from "@/components/StatisticsBanner";
-import { WhyChooseUs } from "@/components/WhyChooseUs";
-import { OurPhilosophy } from "@/components/OurPhilosophy";
-import { Footer } from "@/components/Footer";
-import pattern from "@/assets/food-pattern.jpg";
+import pattern from "@/assets/food-pattern.webp";
+
+// Lazy load non-critical sections
+const AboutSection = lazy(() => import("@/components/AboutSection").then(m => ({ default: m.AboutSection })));
+const StatisticsBanner = lazy(() => import("@/components/StatisticsBanner").then(m => ({ default: m.StatisticsBanner })));
+const WhyChooseUs = lazy(() => import("@/components/WhyChooseUs").then(m => ({ default: m.WhyChooseUs })));
+const OurPhilosophy = lazy(() => import("@/components/OurPhilosophy").then(m => ({ default: m.OurPhilosophy })));
+const Footer = lazy(() => import("@/components/Footer").then(m => ({ default: m.Footer })));
+
+const SectionLoader = () => (
+  <div className="py-20 flex justify-center">
+    <div className="w-8 h-8 border-4 border-primary border-t-transparent rounded-full animate-spin" />
+  </div>
+);
 
 const Index = () => {
   return (
@@ -29,13 +38,17 @@ const Index = () => {
           <Hero />
           <EnquirySection />
           <Categories />
-          <AboutSection />
-          <OurPhilosophy />
-          <StatisticsBanner />
-          <WhyChooseUs />
+          <Suspense fallback={<SectionLoader />}>
+            <AboutSection />
+            <OurPhilosophy />
+            <StatisticsBanner />
+            <WhyChooseUs />
+          </Suspense>
         </div>
       </main>
-      <Footer />
+      <Suspense fallback={<div className="h-64 bg-primary/5" />}>
+        <Footer />
+      </Suspense>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Store, CalendarDays, ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom";
-import pattern from "@/assets/food-pattern.jpg";
+import pattern from "@/assets/food-pattern.webp";
 
 export const EnquirySection = () => {
     const cards = [

@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { useInView } from "framer-motion";
-import pattern from "@/assets/food-pattern.jpg";
+import pattern from "@/assets/food-pattern.webp";
 
 const CountUpNumber = ({ end, suffix }: { end: number; suffix: string }) => {
   const [count, setCount] = useState(0);
