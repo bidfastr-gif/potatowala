@@ -6,9 +6,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
-import farmingPhase from "@/assets/indian_potato_farming.png";
-import manufacturingPhase from "@/assets/frozen-products-collage.jpg";
-import foodItemsCollage from "@/assets/food-items-collage.jpg";
+import farmingPhase from "@/assets/indian_potato_farming.webp";
+import manufacturingPhase from "@/assets/frozen-products-collage.webp";
+import foodItemsCollage from "@/assets/food-items-collage.webp";
 
 interface HeroSlide {
   title: string;
@@ -71,24 +71,21 @@ export const Hero = () => {
     >
       {/* Background image like reference site */}
       <div className="absolute inset-0">
-        {slides.map((slide, index) => (
-          <div
-            key={slide.title}
-            className={`absolute inset-0 transition-opacity duration-700 ${index === currentIndex ? "opacity-100" : "opacity-0"
-              }`}
-          >
-            <img
-              src={slide.image}
-              alt={slide.title}
-              className="w-full h-full object-cover"
-              loading={index === 0 ? "eager" : "lazy"}
-              {...(index === 0 ? { fetchpriority: "high" } : {})}
-              decoding={index === 0 ? "sync" : "async"}
-              width={1920}
-              height={1080}
-            />
-          </div>
-        ))}
+        <div
+          key={currentIndex}
+          className="absolute inset-0 animate-in fade-in duration-700"
+        >
+          <img
+            src={currentSlide.image}
+            alt={currentSlide.title}
+            className="w-full h-full object-cover"
+            loading="eager"
+            fetchpriority="high"
+            decoding="sync"
+            width={1920}
+            height={1080}
+          />
+        </div>
         {/* Dark gradient overlay for text readability and cinematic feel */}
         <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/40 to-black/20" />
       </div>

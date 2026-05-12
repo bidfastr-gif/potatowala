@@ -1,7 +1,7 @@
-import aboutStory1 from "@/assets/about-story-1.jpg";
-import aboutStory2 from "@/assets/about-story-2.jpg";
-import aboutStory3 from "@/assets/about-story-3.jpg";
-import pattern from "@/assets/food-pattern.jpg";
+import aboutStory1 from "@/assets/about-story-1.webp";
+import aboutStory2 from "@/assets/about-story-2.webp";
+import aboutStory3 from "@/assets/about-story-3.webp";
+import pattern from "@/assets/food-pattern.webp";
 
 export const AboutSection = () => {
   return (
@@ -46,6 +46,10 @@ export const AboutSection = () => {
                   src={aboutStory1}
                   alt="Potatowala Story - Part 1"
                   className="w-full h-auto min-h-[320px] object-contain hover:scale-105 transition-transform duration-500"
+                  width={600}
+                  height={400}
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -59,6 +63,10 @@ export const AboutSection = () => {
                   src={aboutStory2}
                   alt="Potatowala Story - Part 2"
                   className="w-full h-auto min-h-[440px] object-contain hover:scale-105 transition-transform duration-500"
+                  width={800}
+                  height={600}
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>
@@ -120,6 +128,10 @@ export const AboutSection = () => {
                   src={aboutStory3}
                   alt="Potatowala Story - Part 3"
                   className="w-full h-auto min-h-[320px] object-contain hover:scale-105 transition-transform duration-500"
+                  width={600}
+                  height={400}
+                  loading="lazy"
+                  decoding="async"
                 />
               </div>
             </div>

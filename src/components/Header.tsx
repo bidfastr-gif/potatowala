@@ -6,10 +6,10 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { ChevronDown } from "lucide-react";
-import logo from "@/assets/potatowala-logo.png";
-import pattern from "@/assets/food-pattern.jpg";
-import swiggyLogo from "@/assets/swiggy-logo.png";
-import zomatoLogo from "@/assets/zomato-logo.png";
+import logo from "@/assets/potatowala-logo.webp";
+import pattern from "@/assets/food-pattern.webp";
+import swiggyLogo from "@/assets/swiggy-logo.webp";
+import zomatoLogo from "@/assets/zomato-logo.webp";
 
 export const Header = () => {
 
